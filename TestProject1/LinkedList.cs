@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace TestProject1
 {
-    public class LinkedList
+    public class LinkedList<T>
     {
-        private Node head;
+        private Node<T> head;
         private int count;
 
-        public LinkedList() {
+        public LinkedList()
+        {
             this.head = null;
             this.count = 0;
-        
         }
 
         public bool Empty { get { return this.count == 0; } }
         public int Count { get { return this.count; } }
 
-        public object Add(int index, object o) 
+        public object Add(int index, T element) 
         {
             if (index < 0)
             {
@@ -33,11 +33,11 @@ namespace TestProject1
                 index = count;
             }
 
-            Node current = this.head;
+            Node<T> current = this.head;
 
             if(this.Empty || index == 0)
             {
-                this.head = new Node (o, this.head);
+                this.head = new Node<T> (element, this.head);
             }
 
             else
@@ -46,17 +46,17 @@ namespace TestProject1
                 
                     current = current.Next;
 
-                current.Next = new Node (o, current.Next);
+                current.Next = new Node<T> (element, current.Next);
 
             }
             count++;
-            return o;
+            return element;
 
         }
         
-        public object Add(object o)
+        public object Add(T element)
         {
-            return this.Add(count, o);
+            return this.Add(count, element);
         }
 
         public object Remove(int index)
@@ -74,7 +74,7 @@ namespace TestProject1
             {
                 index = count -1;
             }
-            Node current = this.head;
+            Node<T> current = this.head;
             object result = null;
             
             if(index == 0)
@@ -101,13 +101,13 @@ namespace TestProject1
             this.count = 0;
         }
 
-        public int IndexOf(object o)
+        public int IndexOf(T element)
         {
-            Node current = this.head;
+            Node<T> current = this.head;
 
             for(int i=0; i < this.count; i++)
             {
-                if (current.Data.Equals(o))
+                if (current.Data.Equals(element))
                     return i;
 
                 current = current.Next;
@@ -115,9 +115,9 @@ namespace TestProject1
             return -1;
         }
 
-        public bool Contains(object o)
+        public bool Contains(T element)
         {
-            return this.IndexOf(o) != -1;
+            return this.IndexOf(element) != -1;
         }
     }
 

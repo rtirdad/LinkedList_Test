@@ -6,27 +6,27 @@ using System.Threading.Tasks;
 
 namespace TestProject1
 {
-    public class Node
+    public class Node<T>
     {
-        private object data;
-        private Node next; 
+        private T data;
+        private Node<T> next;
 
-        public Node(object data, Node next)
+        public Node(T data, Node<T> next)
         {
             this.data = data;
             this.next = next;
         }
 
-        public object Data
+        public T Data
         {
             get { return data; }
             set { this.data = value; }
         }
 
-        public Node Next
+        public Node<T> Next
         {
             get { return this.next; }
-            set { this.next = value;}
+            set { this.next = value; }
         }
     }
 }

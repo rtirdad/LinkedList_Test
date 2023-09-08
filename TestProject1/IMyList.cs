@@ -8,5 +8,6 @@ namespace TestProject1
 {
     internal interface IMyList
     {
+        public bool Empty
     }
 }
