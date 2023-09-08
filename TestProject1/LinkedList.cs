@@ -13,14 +13,25 @@ namespace TestProject1
         public LinkedList() {
         
         }
-        public int AddLast(T element)
+        public object AddLast(T element)
         {
-            throw new NotImplementedException();
-        }
+            if (head == null)
+            {
+                this.head = new LinkedListNode<T>(element, head);
+            }
+             else
+            {
+                LinkedListNode<T> current = this.head;
 
-        public void Clear()
-        {
-            
+                for (int i = 0; i < count - 1; i++)
+
+                    current = current.Next;
+
+                current.Next = new LinkedListNode<T>(element, current.Next);
+            }
+
+            count++;
+            return element;
         }
     }
 }

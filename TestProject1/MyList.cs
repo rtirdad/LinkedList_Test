@@ -1,4 +1,9 @@
-﻿using TestProject1;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TestProject1;
 
 namespace TestProject1
 {
@@ -13,7 +18,6 @@ namespace TestProject1
         public void LinkedListNode()
         {
             this.head = null;
-            this.count = 0;
         }
 
         public bool Empty { get { return this.count == 0; } }
@@ -29,7 +33,7 @@ namespace TestProject1
             return this.count;
         }
 
-        public object Add(int index, T element)
+        public object AddAt(int index, T element)
         {
             if (index < 0)
             {
@@ -63,10 +67,10 @@ namespace TestProject1
 
         public void Add(T element)
         {
-            _list.AddLast(element); // relace
+            _list.AddLast(element);
         }
 
-        public object Remove(int index)
+        public object RemoveAt(int index)
         {
             if (index < 0)
             {
@@ -102,11 +106,10 @@ namespace TestProject1
             return result;
         }
 
-
         public void Clear()
         {
             this.count = 0;
-            _list.Clear();
+            _list = null; 
         }
 
         public int IndexOf(T element)
@@ -122,6 +125,5 @@ namespace TestProject1
             }
             return -1;
         }
-
     }
 }

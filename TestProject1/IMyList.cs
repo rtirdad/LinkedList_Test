@@ -10,8 +10,8 @@ namespace TestProject1
     {
         //int Count();
         bool Empty { get; }
-        object Add(int index, T element);
-        object Remove(int index);
+        object AddAt(int index, T element);
+        object RemoveAt(int index);
         void Clear();
         int IndexOf(T element);
 

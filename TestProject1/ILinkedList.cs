@@ -8,8 +8,6 @@ namespace TestProject1
 {
     internal interface ILinkedList<T>
     {
-        int AddLast(T element);
-        void Clear();
-
+        object AddLast(T element);
     }
 }

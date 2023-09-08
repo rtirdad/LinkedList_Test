@@ -13,7 +13,7 @@ namespace TestingProject1
     public class Tests
     {
        [Test]
-        public void When_a_list_is_created_it_should_be_empty()
+        public void When_a_list_is_cleared_it_should_be_empty()
         {
             // Arrange
             var list = new MyList<int>();
@@ -30,13 +30,27 @@ namespace TestingProject1
             // Arrange
             var list = new MyList<int>();
 
-            list.Add(1);
+            list.AddAt(0, 1);
             var IndexOfOne = list.IndexOf(1);
             var IndexOfTwo = list.IndexOf(2);
 
             // Assert
-            //IndexOfOne.Should().Be(0);
+            IndexOfOne.Should().Be(0);
             IndexOfTwo.Should().Be(-1);
+        }
+
+        [Test]
+        public void if_an_element_is_added_at_index_it_should_be_at_the_right_index()
+        {
+            // Arrange
+            var list = new MyList<int>();
+            list.AddAt(2,4);
+            list.AddAt(0, 4);
+            list.AddAt(2, 6);
+
+            // Assert
+
+            list.Count().Should().Be(3);
         }
 
         [Test]
@@ -44,16 +58,37 @@ namespace TestingProject1
         {
             // Arrange
             var list = new MyList<int>();
-            list.Add(1);
-            list.Add(2);
-            list.Add(3);
-            list.Add(2,4);
-            list.Add(0, 4);
-            list.Add(2, 6);
+
+            //Act
+            list.AddAt(1, 4);
+            list.AddAt(0, 4);
+            list.AddAt(2, 6);
+            list.RemoveAt(2);
 
             // Assert
-            list.Count().Should().Be(0);
+
+            list.Count().Should().Be(2);
         }
+
+
+        [Test]
+        public void if_an_element_is_added_it_should_be_added_to_end_of_the_list()
+        {
+            // Arrange
+            var list = new MyList<int>();
+
+            //Act
+            list.AddAt(0, 1);
+            list.AddAt(1, 2);
+            list.AddAt(2, 3);
+            list.Add(4);
+  
+
+            // Assert
+
+            list.Count().Should().Be(4);
+        }
+
 
 
     }
