@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "ochkGPRR/kPIMXMHe4C72OX+Kg+SWxZ4M/7WsE+VoX2Y3naZkpF52I6oCVBO/mZCr4Re72oLEbo9Z0Gbis09Gw==",
+  "dgSpecHash": "4d/0bCfkJjhg7+bHCgZ1desge9oKObvoPtTXCZBCMUmbN01Yuf3yZppmkux/e6EbMubc2VHeKYTao/FYRe7RZg==",
   "success": true,
   "projectFilePath": "C:\\Users\\CityGIS\\Desktop\\C#\\LinkedList_Test\\TestProject1\\TestProject1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\CityGIS\\.nuget\\packages\\coverlet.collector\\3.2.0\\coverlet.collector.3.2.0.nupkg.sha512",
+    "C:\\Users\\CityGIS\\.nuget\\packages\\fluentassertions\\6.12.0\\fluentassertions.6.12.0.nupkg.sha512",
     "C:\\Users\\CityGIS\\.nuget\\packages\\microsoft.codecoverage\\17.6.0\\microsoft.codecoverage.17.6.0.nupkg.sha512",
     "C:\\Users\\CityGIS\\.nuget\\packages\\microsoft.net.test.sdk\\17.6.0\\microsoft.net.test.sdk.17.6.0.nupkg.sha512",
     "C:\\Users\\CityGIS\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
@@ -16,7 +17,9 @@
     "C:\\Users\\CityGIS\\.nuget\\packages\\nunit\\3.13.3\\nunit.3.13.3.nupkg.sha512",
     "C:\\Users\\CityGIS\\.nuget\\packages\\nunit.analyzers\\3.6.1\\nunit.analyzers.3.6.1.nupkg.sha512",
     "C:\\Users\\CityGIS\\.nuget\\packages\\nunit3testadapter\\4.4.2\\nunit3testadapter.4.4.2.nupkg.sha512",
-    "C:\\Users\\CityGIS\\.nuget\\packages\\system.reflection.metadata\\1.6.0\\system.reflection.metadata.1.6.0.nupkg.sha512"
+    "C:\\Users\\CityGIS\\.nuget\\packages\\system.configuration.configurationmanager\\4.4.0\\system.configuration.configurationmanager.4.4.0.nupkg.sha512",
+    "C:\\Users\\CityGIS\\.nuget\\packages\\system.reflection.metadata\\1.6.0\\system.reflection.metadata.1.6.0.nupkg.sha512",
+    "C:\\Users\\CityGIS\\.nuget\\packages\\system.security.cryptography.protecteddata\\4.4.0\\system.security.cryptography.protecteddata.4.4.0.nupkg.sha512"
   ],
   "logs": []
 }

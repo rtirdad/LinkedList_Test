@@ -1,124 +1,151 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using NUnit.Framework;
+using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security;
+using System.Xml.Linq;
+using TestProject1;
 
 namespace TestProject1
 {
-    public class LinkedList<T>
+    internal class MyList<T> : IMyList<T>
     {
-        private Node<T> head;
         private int count;
+        private LinkedListNode<T> head;
+        LinkedList<T> _list = new LinkedList<T>();
 
-        public LinkedList()
+         public void LinkedList()
         {
-            this.head = null;
-            this.count = 0;
+            head = null;
+            count = 0;
         }
 
-        public bool Empty { get { return this.count == 0; } }
-        public int Count { get { return this.count; } }
+        public T this[int index] { get => AtIndex(index); set => SetElement(index, value); }
 
-        public object Add(int index, T element) 
+      
+        public int Count()
         {
-            if (index < 0)
-            {
-                throw new ArgumentOutOfRangeException("index");
-            }
-        
-            if(index > count)   
-            {
-                index = count;
-            }
-
-            Node<T> current = this.head;
-
-            if(this.Empty || index == 0)
-            {
-                this.head = new Node<T> (element, this.head);
-            }
-
-            else
-            {
-                for(int i = 0; i < index - 1; i++)
-                
-                    current = current.Next;
-
-                current.Next = new Node<T> (element, current.Next);
-
-            }
-            count++;
-            return element;
-
-        }
-        
-        public object Add(T element)
-        {
-            return this.Add(count, element);
+            return _list.Count;
         }
 
-        public object Remove(int index)
+        public bool Empty()
         {
-            if(index < 0)
-            {
-                throw (new ArgumentOutOfRangeException("index"));
-            }
+            return count == 0;
+        }
 
-            if (this.Empty)
-            {
-                return null;
-            }
-            if (index >= count)
-            {
-                index = count -1;
-            }
-            Node<T> current = this.head;
-            object result = null;
-            
-            if(index == 0)
-            {
-                result = current.Data;
-                this.head = current.Next;
-            }
-            else
-            {
-                for (int i = 0; i < index - 1; i++)
-                    current = current.Next;
 
-                result = current.Next.Data;
+        public void Add(T element)
+        {
+            _list.AddLast(element);
 
-                current.Next = current.Next.Next;
-            }
-            count--;
-            return result;
         }
 
         public void Clear()
         {
-            this.head = null;
-            this.count = 0;
-        }
-
-        public int IndexOf(T element)
-        {
-            Node<T> current = this.head;
-
-            for(int i=0; i < this.count; i++)
-            {
-                if (current.Data.Equals(element))
-                    return i;
-
-                current = current.Next;
-            }
-            return -1;
+            _list.Clear();
+            count = 0;
         }
 
         public bool Contains(T element)
         {
+            foreach (var item in _list)
+            {
+                if (item.Equals(element)) return true;
+            }
+            return false;
+
+        }
+
+        public int IndexOf(T element)
+        {
+            int count = 0;
+            foreach (var item in _list)
+            {
+                if (item.Equals(element)) return count;
+                count++;
+            }
+            return -1;
+        }
+
+        public void Insert(int index, T element)
+        {
+
+            if (index < 0 || index > _list.Count)
+            {
+                return;
+            }
+            LinkedListNode<T> newNode = new LinkedListNode<T>(element);
+
+            if (index == 0)
+            {
+                _list.AddFirst(newNode);
+            }
+            else if (index == _list.Count)
+            {
+                _list.AddLast(newNode);
+            }
+            else
+            {
+                LinkedListNode<T> current = _list.First;
+                for (int i = 0; i < index; i++)
+                {
+                    if (current == null) return;
+                    current = current.Next;
+                }
+
+                _list.AddAfter(current.Previous, newNode);
+            }
+        }
+        public void Remove(T element)
+        {
+            RemoveAt(IndexOf(element));
+        }
+        public void RemoveAt(int index)
+        {
+            LinkedListNode<T> current = _list.First;
+            for (int i = 0; i <= index && current != null; i++)
+            {
+                if (i != index)
+                {
+                    current = current.Next;
+                    continue;
+                }
+                _list.Remove(current);
+                count--;
+            }
+        }
+        public T AtIndex(int index)
+        {
+            int count = 0;
+            foreach (var item in _list)
+            {
+                if (index.Equals(count)) return item;
+                count++;
+            }
+            throw new IndexOutOfRangeException();
+        }
+
+        public void SetElement(int index, T value)
+        {
+            if (index < 0 || index >= _list.Count)
+            {
+                throw new IndexOutOfRangeException();
+            }
+
+            LinkedListNode<T> current = _list.First;
+            for (int i = 0; i < index; i++)
+            {
+                current = current.Next;
+            }
+
+            current.Value = value;
+        }
+
+        public bool ContainsElement(T element)
+        {
             return this.IndexOf(element) != -1;
         }
-    }
 
+    }
 }
