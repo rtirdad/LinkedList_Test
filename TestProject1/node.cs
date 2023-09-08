@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace TestProject1
 {
-    public class Node<T>
+    public class LinkedListNode<T>
     {
         private T data;
-        private Node<T> next;
+        private LinkedListNode<T> next;
 
-        public Node(T data, Node<T> next)
+        public LinkedListNode(T data, LinkedListNode<T> next)
         {
             this.data = data;
             this.next = next;
@@ -23,7 +23,7 @@ namespace TestProject1
             set { this.data = value; }
         }
 
-        public Node<T> Next
+        public LinkedListNode<T> Next
         {
             get { return this.next; }
             set { this.next = value; }

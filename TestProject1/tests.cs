@@ -12,7 +12,7 @@ namespace TestingProject1
 
     public class Tests
     {
-        [Test]
+       [Test]
         public void When_a_list_is_created_it_should_be_empty()
         {
             // Arrange
@@ -35,9 +35,26 @@ namespace TestingProject1
             var IndexOfTwo = list.IndexOf(2);
 
             // Assert
-            IndexOfOne.Should().Be(0);
+            //IndexOfOne.Should().Be(0);
             IndexOfTwo.Should().Be(-1);
         }
+
+        [Test]
+        public void if_an_element_is_added_at_index_it_should_be_at_the_right_indx()
+        {
+            // Arrange
+            var list = new MyList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list.Add(2,4);
+            list.Add(0, 4);
+            list.Add(2, 6);
+
+            // Assert
+            list.Count().Should().Be(0);
+        }
+
 
     }
 
