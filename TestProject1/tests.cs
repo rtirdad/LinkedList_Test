@@ -54,7 +54,7 @@ namespace TestingProject1
         }
 
         [Test]
-        public void if_an_element_is_added_at_index_it_should_be_at_the_right_indx()
+        public void if_an_element_is_added_at_index_it_should_be_at_the_right_indEx()
         {
             // Arrange
             var list = new MyList<int>();
@@ -63,13 +63,11 @@ namespace TestingProject1
             list.AddAt(1, 4);
             list.AddAt(0, 4);
             list.AddAt(2, 6);
-            list.RemoveAt(2);
 
             // Assert
 
-            list.Count().Should().Be(2);
+            list.Count().Should().Be(3);
         }
-
 
         [Test]
         public void if_an_element_is_added_it_should_be_added_to_end_of_the_list()
@@ -78,19 +76,13 @@ namespace TestingProject1
             var list = new MyList<int>();
 
             //Act
-            list.AddAt(0, 1);
-            list.AddAt(1, 2);
-            list.AddAt(2, 3);
-            list.Add(4);
+            list.Add(2);
+            list.Add(3);
   
-
             // Assert
 
-            list.Count().Should().Be(4);
+            list.Count().Should().Be(2);
         }
-
-
-
     }
 
 

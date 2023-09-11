@@ -9,11 +9,11 @@ namespace TestProject1
     interface IMyList<T>
     {
         //int Count();
-        bool Empty { get; }
-        object AddAt(int index, T element);
-        object RemoveAt(int index);
+        void AddAt(int index, T element);
+        void RemoveAt(int index);
         void Clear();
         int IndexOf(T element);
+        void Add(T element);
 
     }
 }

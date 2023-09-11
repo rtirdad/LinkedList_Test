@@ -9,5 +9,12 @@ namespace TestProject1
     internal interface ILinkedList<T>
     {
         object AddLast(T element);
+
+        object AddAt(int index, T element);
+        object RemoveAt(int index);
+        void ClearList();
+
+        int IndexOf(T element);
+
     }
 }
