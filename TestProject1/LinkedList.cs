@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
+//using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace TestProject1
 {
@@ -11,7 +12,6 @@ namespace TestProject1
         private int count;
         private LinkedListNode<T> head;
         public LinkedList() {
-        
         }
 
         public int Count => count;
@@ -19,7 +19,6 @@ namespace TestProject1
         public object AddLast(T element)
         {
             LinkedListNode<T> newNode = new LinkedListNode<T>(element, head);
-
             if (head == null)
             {
                 head = newNode;
@@ -49,9 +48,8 @@ namespace TestProject1
         {
             if (index < 0)
             {
-                throw (new ArgumentOutOfRangeException("index"));
+                throw (new ArgumentOutOfRangeException());
             }
-
             if (this.Empty)
             {
                 return null;
@@ -77,6 +75,7 @@ namespace TestProject1
 
                 current.Next = current.Next.Next;
             }
+            count--;
             return result;
         }
 
@@ -91,14 +90,11 @@ namespace TestProject1
             {
                 index = Count;
             }
-
             LinkedListNode<T> current = this.head;
-
             if (this.Empty || index == 0)
             {
                 this.head = new LinkedListNode<T>(element, head);
             }
-
             else
             {
                 for (int i = 0; i < index - 1; i++)
@@ -115,7 +111,6 @@ namespace TestProject1
         public int IndexOf(T element)
         {
             LinkedListNode<T> current = this.head;
-
             for (int i = 0; i < Count; i++)
             {
                 if (current.Data.Equals(element))
@@ -125,5 +120,42 @@ namespace TestProject1
             }
             return -1;
         }
+
+        public bool Contains(T element)
+        {
+            LinkedListNode<T> current = this.head;
+
+            for (int i = 0; i < Count; i++)
+            {
+                if (current.Data.Equals(element))
+                    return true;
+
+                current = current.Next;
+            }
+            return false;
+        }
+
+        public void Remove(T element)
+        {
+            if (head.Data.Equals(element))
+            {
+                head = head.Next;
+                return; 
+            }
+
+            LinkedListNode<T> current = head;
+            while (current.Next != null)
+            {
+                if (current.Next.Data.Equals(element))
+                {
+                    current.Next = current.Next.Next; 
+                    return;
+                }
+                count--;
+                current = current.Next;
+            }
+        }
+
+      
     }
 }

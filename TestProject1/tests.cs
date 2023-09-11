@@ -54,35 +54,67 @@ namespace TestingProject1
         }
 
         [Test]
-        public void if_an_element_is_added_at_index_it_should_be_at_the_right_indEx()
-        {
-            // Arrange
-            var list = new MyList<int>();
-
-            //Act
-            list.AddAt(1, 4);
-            list.AddAt(0, 4);
-            list.AddAt(2, 6);
-
-            // Assert
-
-            list.Count().Should().Be(3);
-        }
-
-        [Test]
         public void if_an_element_is_added_it_should_be_added_to_end_of_the_list()
         {
             // Arrange
             var list = new MyList<int>();
 
             //Act
+            //list.AddAt(0, 4);
             list.Add(2);
             list.Add(3);
-  
+            var IndexOfTwo = list.IndexOf(3);  
             // Assert
 
             list.Count().Should().Be(2);
+            IndexOfTwo.Should().Be(1);
         }
+
+
+        [Test]
+        public void if_list_contains_element_return_true_if_not_return_false()
+        {
+            // Arrange
+            var list = new MyList<int>();
+
+            list.AddAt(0,1);
+            var ContainOne = list.Contains(1);
+            var ContainTwo = list.Contains(2);
+
+            // Assert
+            ContainOne.Should().BeTrue();
+            ContainTwo.Should().BeFalse();
+          
+        }
+
+        [Test]
+        public void if_an_element_is_removed_it_should_be_removed_from_list()
+        {
+            // Arrange
+            var list = new MyList<int>();
+            list.AddAt(1, 1);
+            list.AddAt(0, 2);
+            list.AddAt(2, 3);
+            list.Remove(3);
+
+            // Assert
+            list.Count().Should().Be(2);
+        }
+
+        [Test]
+        public void if_an_element_is_removedAt_Index_its_element_according_to_the_index_should_be_removed()
+        {
+            // Arrange
+            var list = new MyList<int>();
+            list.AddAt(1, 1);
+            list.AddAt(0, 2);
+            list.AddAt(2, 3);
+            list.RemoveAt(1);
+
+            // Assert
+            list.Count().Should().Be(2);
+        }
+
     }
 
 

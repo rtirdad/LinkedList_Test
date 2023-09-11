@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+//using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +14,8 @@ namespace TestProject1
         void Clear();
         int IndexOf(T element);
         void Add(T element);
+        bool Contains(T element);
+        void Remove(T element);
 
     }
 }

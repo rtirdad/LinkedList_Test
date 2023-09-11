@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
-using System.Collections.Generic;
+//using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,7 +41,6 @@ namespace TestProject1
         public void Add(T element)
         {
             _list.AddLast(element);
-            
         }
 
         public void RemoveAt(int index)
@@ -57,6 +56,16 @@ namespace TestProject1
         public int IndexOf(T element)
         {
           return _list.IndexOf(element);
+        }
+
+       public bool Contains(T element)
+        {
+            return _list.Contains(element);
+        }
+
+        public void Remove(T element)
+        {
+            _list.Remove(element);
         }
     }
 }
