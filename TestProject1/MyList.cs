@@ -33,9 +33,9 @@ namespace TestProject1
             return _list.Count;
         }
 
-        public void AddAt(int index, T element)
+        public void InsertAt(int index, T element)
         {
-           _list.AddAt(index, element);
+           _list.InsertAt(index, element);
         }
 
         public void Add(T element)
@@ -67,5 +67,7 @@ namespace TestProject1
         {
             _list.Remove(element);
         }
+
+        public T this[int index] { get => _list.AtIndex(index); set => _list.SetElement(index, value); }
     }
 }

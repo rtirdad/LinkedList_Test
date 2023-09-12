@@ -9,7 +9,7 @@ namespace TestProject1
     interface IMyList<T>
     {
         //int Count();
-        void AddAt(int index, T element);
+        void InsertAt(int index, T element);
         void RemoveAt(int index);
         void Clear();
         int IndexOf(T element);

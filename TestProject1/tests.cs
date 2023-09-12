@@ -30,7 +30,7 @@ namespace TestingProject1
             // Arrange
             var list = new MyList<int>();
 
-            list.AddAt(0, 1);
+            list.InsertAt(0, 1);
             var IndexOfOne = list.IndexOf(1);
             var IndexOfTwo = list.IndexOf(2);
 
@@ -44,13 +44,13 @@ namespace TestingProject1
         {
             // Arrange
             var list = new MyList<int>();
-            list.AddAt(2,4);
-            list.AddAt(0, 4);
-            list.AddAt(2, 6);
+            list.InsertAt(2,4);
+            list.InsertAt(0, 4);
+             
 
             // Assert
 
-            list.Count().Should().Be(3);
+            list.Count().Should().Be(2);
         }
 
         [Test]
@@ -77,7 +77,7 @@ namespace TestingProject1
             // Arrange
             var list = new MyList<int>();
 
-            list.AddAt(0,1);
+            list.InsertAt(0,1);
             var ContainOne = list.Contains(1);
             var ContainTwo = list.Contains(2);
 
@@ -92,9 +92,9 @@ namespace TestingProject1
         {
             // Arrange
             var list = new MyList<int>();
-            list.AddAt(1, 1);
-            list.AddAt(0, 2);
-            list.AddAt(2, 3);
+            list.InsertAt(1, 1);
+            list.InsertAt(0, 2);
+            list.InsertAt(2, 3);
             list.Remove(3);
 
             // Assert
@@ -106,10 +106,26 @@ namespace TestingProject1
         {
             // Arrange
             var list = new MyList<int>();
-            list.AddAt(1, 1);
-            list.AddAt(0, 2);
-            list.AddAt(2, 3);
+            list.InsertAt(1, 1);
+            list.InsertAt(0, 2);
+            list.InsertAt(2, 3);
             list.RemoveAt(1);
+
+            // Assert
+            list.Count().Should().Be(2);
+        }
+
+
+        [Test]
+        public void if_an_element_is_removedAt_Index_its_element_according_to_the_index_should_be_remov()
+        {
+            // Arrange
+            var list = new MyList<int>();
+            list.InsertAt(1, 1);
+            list.InsertAt(0, 2);
+            list.InsertAt(2, 3);
+            list.RemoveAt(1);
+            
 
             // Assert
             list.Count().Should().Be(2);
