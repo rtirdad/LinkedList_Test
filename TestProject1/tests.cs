@@ -47,7 +47,6 @@ namespace TestingProject1
             list.InsertAt(2,4);
             list.InsertAt(0, 4);
              
-
             // Assert
 
             list.Count().Should().Be(2);
@@ -117,13 +116,14 @@ namespace TestingProject1
 
 
         [Test]
-        public void if_an_element_is_removedAt_Index_its_element_according_to_the_index_should_be_remov()
+        public void If_element_is_set_it_should_be_set_at_the_right_index()
         {
             // Arrange
             var list = new MyList<int>();
             list.InsertAt(1, 1);
             list.InsertAt(0, 2);
             list.InsertAt(2, 3);
+            list[2] = 4;
             list.RemoveAt(1);
             
 

@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace TestProject1
 {
-    internal class LinkedList<T> : ILinkedList<T>
+    internal class LinkedList<T> : ILinkedList<T> 
     {
         private int count;
         private LinkedListNode<T> head;
@@ -30,14 +30,14 @@ namespace TestProject1
             }
 
             
-            else// O(n)
+            else
             {
-                LinkedListNode<T> current = head;
-                while (current.Next != null)
+                LinkedListNode<T> current = head;// O(1)
+                while (current.Next != null)// O(n)
                 {
                     current = current.Next;
                 }
-                current.Next = newNode;
+                current.Next = newNode;// O(1)
             }
             count++; // O(1)
             return element; // O(1)
@@ -168,32 +168,28 @@ namespace TestProject1
             }
         }
 
-
+        // O(n)
         public T AtIndex(int index)
         {
-           if (index < 0)
+           if (index < 0) // O(1)
             {
                 throw new ArgumentOutOfRangeException("index");
             }
 
-           /*if (this.Empty)
-            {
-                return null;
-            }*/
-
-           if (index  >= Count)
+           if (index  >= Count) // O(1)
             {
                 index = count - 0;
             }
 
-            LinkedListNode<T> current = head;
+            LinkedListNode<T> current = head; // O(1)
             
-            for (int i = 0;i < index;i++) 
+            for (int i = 0;i < index;i++) // O(n)
                 current = current.Next;
             return current.Data;
                     
         }
 
+        // O(n)
         public void SetElement(int index, T element)
         {
             if (index < 0 || index >= Count)
@@ -209,6 +205,9 @@ namespace TestProject1
 
             current.Data = element;
         }
-
     }
 }
+
+
+
+

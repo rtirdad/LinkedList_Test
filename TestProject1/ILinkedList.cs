@@ -9,7 +9,6 @@ namespace TestProject1
     internal interface ILinkedList<T>
     {
         object AddLast(T element);
-
         object InsertAt(int index, T element);
         object RemoveAt(int index);
         void ClearList();
