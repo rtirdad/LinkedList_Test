@@ -8,8 +8,6 @@ using TestProject1;
 
 namespace TestingProject1
 {
-
-
     public class Tests
     {
        [Test]
@@ -17,7 +15,6 @@ namespace TestingProject1
         {
             // Arrange
             var list = new MyList<int>();
-
             list.Add(1);
             list.Clear();
 
@@ -48,7 +45,6 @@ namespace TestingProject1
             list.InsertAt(0, 4);
              
             // Assert
-
             list.Count().Should().Be(2);
         }
 
@@ -69,7 +65,6 @@ namespace TestingProject1
             IndexOfTwo.Should().Be(1);
         }
 
-
         [Test]
         public void if_list_contains_element_return_true_if_not_return_false()
         {
@@ -83,7 +78,6 @@ namespace TestingProject1
             // Assert
             ContainOne.Should().BeTrue();
             ContainTwo.Should().BeFalse();
-          
         }
 
         [Test]
@@ -114,25 +108,21 @@ namespace TestingProject1
             list.Count().Should().Be(2);
         }
 
-
         [Test]
         public void If_element_is_set_it_should_be_set_at_the_right_index()
         {
             // Arrange
-            var list = new MyList<int>();
-            list.InsertAt(1, 1);
-            list.InsertAt(0, 2);
-            list.InsertAt(2, 3);
-            list[2] = 4;
-            list.RemoveAt(1);
-            
+            var list = new MyList<string>();
+            list.InsertAt(1, "a");
+            list.InsertAt(0, "b");
+            list.InsertAt(2, "c");
+            list[2] = "d";
+            var IndexOfD = list.IndexOf("d");
 
             // Assert
-            list.Count().Should().Be(2);
+            IndexOfD.Should().Be(2);
+            list.Count().Should().Be(3);
         }
 
     }
-
-
-
 }

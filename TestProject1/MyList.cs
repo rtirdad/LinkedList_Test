@@ -14,19 +14,10 @@ namespace TestProject1
         private LinkedListNode<T> head;
         LinkedList<T> _list = new LinkedList<T>();
 
-
         public void LinkedListNode()
         {
             this.head = null;
         }
-
-        public bool Empty { get { return _list.Count == 0; } }
-        //public int Count { get { return this.count; } }
-
-        //bool IMyList<T>.Empty => throw new NotImplementedException();
-
-        //int IMyList<T>.Count => throw new NotImplementedException();
-        //public bool Empty { get { return this.count == 0; } }
 
         public int Count()
         { 

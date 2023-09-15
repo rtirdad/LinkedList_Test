@@ -15,10 +15,7 @@ namespace TestProject1
         }
         public int Count => count; // O(1)
         public bool Empty { get { return Count == 0; } } //O(1)
-
         public T this[int index] { get => AtIndex(index); set => SetElement(index, value); }
-
-
 
         // worst case scenario - O(n)
         public object AddLast(T element)
@@ -28,8 +25,6 @@ namespace TestProject1
             {
                 head = newNode;
             }
-
-            
             else
             {
                 LinkedListNode<T> current = head;// O(1)
@@ -85,7 +80,6 @@ namespace TestProject1
             return result; // O(1)
         }
 
-
         // worst case scenario - O(n)
         public object InsertAt(int index, T element)
         {
@@ -134,7 +128,7 @@ namespace TestProject1
         // worst case scenario - O(n)
         public bool Contains(T element)
         {
-            LinkedListNode<T> current = this.head; ;
+            LinkedListNode<T> current = this.head;
 
             for (int i = 0; i < Count; i++)
             {
@@ -161,7 +155,7 @@ namespace TestProject1
                 if (current.Next.Data.Equals(element)) // O(1)
                 {
                     current.Next = current.Next.Next; // O(1)
-                    return;// O(1)
+                    return;
                 }
                 count--;// O(1)
                 current = current.Next;// O(1)
@@ -178,7 +172,7 @@ namespace TestProject1
 
            if (index  >= Count) // O(1)
             {
-                index = count - 0;
+                index = count - 0; 
             }
 
             LinkedListNode<T> current = head; // O(1)
@@ -188,7 +182,6 @@ namespace TestProject1
             return current.Data;
                     
         }
-
         // O(n)
         public void SetElement(int index, T element)
         {
@@ -202,7 +195,6 @@ namespace TestProject1
             {
                 current = current.Next;
             }
-
             current.Data = element;
         }
     }
