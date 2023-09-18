@@ -1,5 +1,7 @@
 ﻿using System;
-//using System.Collections.Generic;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,15 +9,36 @@ using System.Xml.Linq;
 
 namespace TestProject1
 {
-    internal class LinkedList<T> : ILinkedList<T> 
+    internal class LinkedList<T> : ILinkedList<T>, IEnumerable<T>, IEnumerable
     {
         private int count;
         private LinkedListNode<T> head;
-        public LinkedList() {
-        }
-        public int Count => count; // O(1)
-        public bool Empty { get { return Count == 0; } } //O(1)
+
+        public int Count => count;
+
+        public bool Empty => Count == 0;
+
         public T this[int index] { get => AtIndex(index); set => SetElement(index, value); }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            LinkedListNode<T> current = head;
+            while (current != null)
+            {
+                yield return current.Data;
+                current = current.Next;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumeratorForIEnumerable();
+        }
+
+        private IEnumerator GetEnumeratorForIEnumerable()
+        {
+            return GetEnumerator();
+        }
 
         // worst case scenario - O(n)
         public object AddLast(T element)
@@ -165,7 +188,7 @@ namespace TestProject1
         // O(n)
         public T AtIndex(int index)
         {
-           if (index < 0) // O(1)
+           if (index < 0) 
             {
                 throw new ArgumentOutOfRangeException("index");
             }
@@ -182,7 +205,7 @@ namespace TestProject1
             return current.Data;
                     
         }
-        // O(n)
+    
         public void SetElement(int index, T element)
         {
             if (index < 0 || index >= Count)

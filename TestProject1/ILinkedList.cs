@@ -1,12 +1,13 @@
 ﻿using System;
-//using System.Collections.Generic;
+using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace TestProject1
 {
-    internal interface ILinkedList<T>
+    internal interface ILinkedList<T> : IEnumerable<T>
     {
         object AddLast(T element);
         object InsertAt(int index, T element);

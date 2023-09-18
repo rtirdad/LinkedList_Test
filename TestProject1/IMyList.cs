@@ -1,14 +1,14 @@
 ﻿using System;
-//using System.Collections.Generic;
+using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace TestProject1
 {
-    interface IMyList<T>
+    interface IMyList<T> : IEnumerable<T>
     {
-        int Count();
         void InsertAt(int index, T element);
         void RemoveAt(int index);
         void Clear();
