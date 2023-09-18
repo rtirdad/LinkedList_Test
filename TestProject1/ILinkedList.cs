@@ -1,5 +1,6 @@
 ﻿using System;
 //using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,5 +19,9 @@ namespace TestProject1
         T this[int index] { get; set; }
         T AtIndex(int index);
         void SetElement(int index, T element);
+
+        public IEnumerator<T> GetEnumerator();
+
+
     }
 }

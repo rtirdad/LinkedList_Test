@@ -1,12 +1,10 @@
 ﻿using System;
-//using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace TestProject1
 {
-    interface IMyList<T>
+    interface IMyList<T> : IEnumerable<T>
     {
         int Count();
         void InsertAt(int index, T element);
@@ -16,8 +14,8 @@ namespace TestProject1
         void Add(T element);
         bool Contains(T element);
         void Remove(T element);
+        new IEnumerator<T> GetEnumerator();
     }
-
 }
 
 // 2. Zou je nog andere data structuren kunnen noemen die deze interface ook zouden kunnen implementeren?

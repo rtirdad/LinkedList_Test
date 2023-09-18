@@ -1,13 +1,15 @@
 ﻿using System;
-//using System.Collections.Generic;
+using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
+
 namespace TestProject1
 {
-    internal class LinkedList<T> : ILinkedList<T> 
+    internal class LinkedList<T> : ILinkedList<T> , IEnumerable<T>
     {
         private int count;
         private LinkedListNode<T> head;
@@ -109,7 +111,6 @@ namespace TestProject1
             count++; // O(1)
             return element; // O(1)
         }
-      
 
         // worst case scenario - O(n)
         public int IndexOf(T element)
@@ -197,8 +198,91 @@ namespace TestProject1
             }
             current.Data = element;
         }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return new LinkedListEnumerator(this.head);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }
+
+    /*using System;
+    using System.Collections;
+    using System.Collections.Generic;
+
+    namespace TestProject1
+    {
+        internal class LinkedList<T> : ILinkedList<T>, IEnumerable<T>
+        {
+            // ... Other members of your LinkedList class ...
+
+            public IEnumerator<T> GetEnumerator()
+            {
+                return new LinkedListEnumerator(this.head);
+            }
+
+            IEnumerator IEnumerable.GetEnumerator()
+            {
+                return GetEnumerator();
+            }
+
+            private class LinkedListEnumerator : IEnumerator<T>
+            {
+                private LinkedListNode<T> current;
+                private LinkedListNode<T> head;
+                private bool isFirst = true;
+
+                public LinkedListEnumerator(LinkedListNode<T> head)
+                {
+                    this.head = head;
+                    current = null;
+                }
+
+                public T Current
+                {
+                    get
+                    {
+                        if (current == null)
+                            throw new InvalidOperationException();
+
+                        return current.Data;
+                    }
+                }
+
+                object IEnumerator.Current => Current;
+
+                public bool MoveNext()
+                {
+                    if (isFirst)
+                    {
+                        isFirst = false;
+                        current = head;
+                    }
+                    else
+                    {
+                        current = current.Next;
+                    }
+
+                    return current != null;
+                }
+
+                public void Reset()
+                {
+                    isFirst = true;
+                    current = null;
+                }
+
+                public void Dispose()
+                {
+                }
+            }
+        }
+    }*/
 
 
 

@@ -120,9 +120,28 @@ namespace TestingProject1
             var IndexOfD = list.IndexOf("d");
 
             // Assert
+            Console.WriteLine(list);
             IndexOfD.Should().Be(2);
             list.Count().Should().Be(3);
         }
 
+        [Test]
+        public void If_element_is_set_it_should_be_set_at_the_right_inde()
+        {
+            // Arrange
+            var list = new MyList<string>();
+
+          
+            list.InsertAt(1, "a");
+            list.InsertAt(0, "b");
+            list.InsertAt(2, "c");
+            list[2] = "d";
+            var IndexOfD = list.IndexOf("d");
+
+            // Assert
+            Console.WriteLine(list);
+            IndexOfD.Should().Be(2);
+            list.Count().Should().Be(3);
+        }
     }
 }
