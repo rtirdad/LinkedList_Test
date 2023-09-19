@@ -2,14 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+
 
 namespace TestProject1
 {
-    internal class LinkedList<T> : ILinkedList<T>, IEnumerable<T>, IEnumerable
+    internal class LinkedList<T> : ILinkedList<T>, IEnumerable<T> , IEnumerable
     {
         private int count;
         private LinkedListNode<T> head;
@@ -35,7 +32,7 @@ namespace TestProject1
             return GetEnumeratorForIEnumerable();
         }
 
-        private IEnumerator GetEnumeratorForIEnumerable()
+        public IEnumerator<T> GetEnumeratorForIEnumerable()
         {
             return GetEnumerator();
         }
@@ -58,7 +55,6 @@ namespace TestProject1
             }
             count++; 
             return element; 
-
         }
 
         public void ClearList()

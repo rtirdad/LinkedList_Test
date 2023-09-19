@@ -3,6 +3,7 @@ using System.Linq;
 using static TestingProject1.Tests;
 using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 using Microsoft.VisualBasic;
 using TestProject1;
 
@@ -112,21 +113,21 @@ namespace TestingProject1
         public void If_element_is_set_it_should_be_set_at_the_right_index()
         {
             // Arrange
-            var list = new MyList<string>();
-            list.InsertAt(1, "a");
-            list.InsertAt(0, "b");
-            list.InsertAt(2, "c");
-            list[2] = "d";
-            var IndexOfD = list.IndexOf("d");
+            var list = new MyList<int>();
 
+            // Act
+            list.InsertAt(0, 1);
+            list.InsertAt(1, 2);    
+            list.InsertAt(2, 3);
+            var IndexOfOne = list.IndexOf(1);
 
             // Assert
-            IndexOfD.Should().Be(2);
+            IndexOfOne.Should().Be(0);
             list.Count().Should().Be(3);
         }
 
         [Test]
-        public void IEnumerable_Test()
+        public void List_can_also_be_string()
         {
             // Arrange
             var list = new MyList<string>();
@@ -136,15 +137,48 @@ namespace TestingProject1
             list[2] = "d";
             var IndexOfD = list.IndexOf("d");
 
-            var E = list.GetEnumerator();
-            Console.WriteLine(E);
 
-            // Assert
-            //E.Should().Be();
             IndexOfD.Should().Be(2);
             list.Count().Should().Be(3);
         }
+ //var result = new List<string>(list.GetEnumerator())
+        /*[Test]
+        public void GetEnumerable_ReturnsEnumerationInOrder()
+        {
+            // Arrange
+            var list = new MyList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
 
+            // Act
+           ;
+            IEnumerator<int> e = list.GetEnumerator();
+
+            // Assert
+            CollectionAssert.AreEqual(new[] { 1, 2, 3 }, (IEnumerable)e);
+        }
+
+
+        [Test]
+        public void GetEnumerable_ReturnsEnumerationInOrder()
+        {
+            // Arrange
+            var list = new MyList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+
+
+            IEnumerator<int> e = list.GetEnumerator();
+
+
+            // Act
+            //IEnumerator<int> e = new List<int>(list.GetEnumerator());
+
+            // Assert
+            CollectionAssert.AreEqual(new[] { 1, 2, 3 }, (IEnumerable)e);
+        }*/
 
 
     }
