@@ -29,6 +29,7 @@ namespace TestProject1
         public void Clear()
         {
             _list.ClearList();
+            
         }
 
         public int IndexOf(T element)

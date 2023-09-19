@@ -40,57 +40,56 @@ namespace TestProject1
             return GetEnumerator();
         }
 
-        // worst case scenario - O(n)
         public object AddLast(T element)
         {
-            LinkedListNode<T> newNode = new LinkedListNode<T>(element, head); // O(1)
-            if (head == null) // O(1)
+            LinkedListNode<T> newNode = new LinkedListNode<T>(element, head); 
+            if (head == null) 
             {
                 head = newNode;
             }
             else
             {
-                LinkedListNode<T> current = head;// O(1)
-                while (current.Next != null)// O(n)
+                LinkedListNode<T> current = head;
+                while (current.Next != null)
                 {
                     current = current.Next;
                 }
-                current.Next = newNode;// O(1)
+                current.Next = newNode;
             }
-            count++; // O(1)
-            return element; // O(1)
+            count++; 
+            return element; 
 
         }
-        //O(1)
+
         public void ClearList()
         {
+            head = null;
             count = 0;
         }
 
-        // worst case scenario - O(n)
         public object RemoveAt(int index)
         {
-            if (index < 0)  // O(1)
+            if (index < 0)  
             {
                 throw (new ArgumentOutOfRangeException()); 
             }
-            if (this.Empty) // O(1)
+            if (this.Empty) 
             {
                 return null;
             }
-            if (index >= Count) // O(1)
+            if (index >= Count) 
             {
                 index = Count - 1;
             }
-            LinkedListNode<T> current = this.head; // O(1)
+            LinkedListNode<T> current = this.head; 
             object result = null;
 
-            if (index == 0)  // O(1)
+            if (index == 0)  
             {
                 result = current.Data;
                 this.head = current.Next;
             }
-            else // O(n)
+            else 
             {
                 for (int i = 0; i < index - 1; i++)
                     current = current.Next;
@@ -99,29 +98,28 @@ namespace TestProject1
 
                 current.Next = current.Next.Next;
             }
-            count--; // O(1)
-            return result; // O(1)
+            count--; 
+            return result; 
         }
-
-        // worst case scenario - O(n)
+        
         public object InsertAt(int index, T element)
         {
-            if (index < 0) // O(1)
+            if (index < 0) 
             {
                 throw new ArgumentOutOfRangeException();
             }
 
-            if (index > Count) // O(1)
+            if (index > Count) 
             {
                 index = Count;
             }
-            LinkedListNode<T> current = this.head; // O(1)
+            LinkedListNode<T> current = this.head; 
 
-            if (this.Empty || index == 0) // O(1)
+            if (this.Empty || index == 0) 
             {
                 this.head = new LinkedListNode<T>(element, head);
             }
-            else // O(n)
+            else 
             {
                 for (int i = 0; i < index - 1; i++)
 
@@ -129,26 +127,26 @@ namespace TestProject1
 
                 current.Next = new LinkedListNode<T>(element, current.Next);
             }
-            count++; // O(1)
-            return element; // O(1)
+            count++; 
+            return element; 
         }
       
 
-        // worst case scenario - O(n)
+  
         public int IndexOf(T element)
         {
-            LinkedListNode<T> current = this.head;  // O(1)
-            for (int i = 0; i < Count; i++) // O(n)
+            LinkedListNode<T> current = this.head;  
+            for (int i = 0; i < Count; i++) 
             {
-                if (current.Data.Equals(element)) // O(1)
+                if (current.Data.Equals(element)) 
                     return i;
 
-                current = current.Next;// O(1)
+                current = current.Next;
             }
-            return -1;// O(1)
+            return -1;
         }
 
-        // worst case scenario - O(n)
+   
         public bool Contains(T element)
         {
             LinkedListNode<T> current = this.head;
@@ -163,29 +161,29 @@ namespace TestProject1
             return false;
         }
 
-        // worst case scenario - O(n)
+  
         public void Remove(T element)
         {
-            if (head.Data.Equals(element)) // O(1)
+            if (head.Data.Equals(element)) 
             {
-                head = head.Next;// O(1)
-                return; // O(1)
+                head = head.Next;
+                return; 
             }
 
-            LinkedListNode<T> current = head;// O(1)
-            while (current.Next != null) // O(n)
+            LinkedListNode<T> current = head;
+            while (current.Next != null) 
             {
-                if (current.Next.Data.Equals(element)) // O(1)
+                if (current.Next.Data.Equals(element)) 
                 {
-                    current.Next = current.Next.Next; // O(1)
+                    current.Next = current.Next.Next; 
                     return;
                 }
-                count--;// O(1)
-                current = current.Next;// O(1)
+                count--;
+                current = current.Next;
             }
         }
 
-        // O(n)
+        
         public T AtIndex(int index)
         {
            if (index < 0) 
@@ -193,14 +191,14 @@ namespace TestProject1
                 throw new ArgumentOutOfRangeException("index");
             }
 
-           if (index  >= Count) // O(1)
+           if (index  >= Count) 
             {
                 index = count - 0; 
             }
 
-            LinkedListNode<T> current = head; // O(1)
+            LinkedListNode<T> current = head; 
             
-            for (int i = 0;i < index;i++) // O(n)
+            for (int i = 0;i < index;i++) 
                 current = current.Next;
             return current.Data;
                     

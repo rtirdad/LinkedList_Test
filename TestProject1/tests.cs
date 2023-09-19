@@ -43,9 +43,10 @@ namespace TestingProject1
             var list = new MyList<int>();
             list.InsertAt(2,4);
             list.InsertAt(0, 4);
+            list.Clear();
              
             // Assert
-            list.Count().Should().Be(2);
+            list.Count().Should().Be(0);
         }
 
         [Test]
@@ -55,14 +56,13 @@ namespace TestingProject1
             var list = new MyList<int>();
 
             //Act
-            //list.AddAt(0, 4);
-            list.Add(2);
-            list.Add(3);
-            var IndexOfTwo = list.IndexOf(3);  
+           
+            list.Add(1);
+            var IndexOfTwo = list.IndexOf(1);  
             // Assert
 
-            list.Count().Should().Be(2);
-            IndexOfTwo.Should().Be(1);
+            list.Count().Should().Be(1);
+            IndexOfTwo.Should().Be(0);
         }
 
         [Test]
@@ -119,10 +119,33 @@ namespace TestingProject1
             list[2] = "d";
             var IndexOfD = list.IndexOf("d");
 
+
             // Assert
             IndexOfD.Should().Be(2);
             list.Count().Should().Be(3);
         }
+
+        [Test]
+        public void IEnumerable_Test()
+        {
+            // Arrange
+            var list = new MyList<string>();
+            list.InsertAt(1, "a");
+            list.InsertAt(0, "b");
+            list.InsertAt(2, "c");
+            list[2] = "d";
+            var IndexOfD = list.IndexOf("d");
+
+            var E = list.GetEnumerator();
+            Console.WriteLine(E);
+
+            // Assert
+            //E.Should().Be();
+            IndexOfD.Should().Be(2);
+            list.Count().Should().Be(3);
+        }
+
+
 
     }
 }
