@@ -198,5 +198,6 @@ namespace TestingProject1
             enumerator.MoveNext().Should().BeTrue();
             enumerator.Current.Should().Be(3);
         }
+
     }
 }
