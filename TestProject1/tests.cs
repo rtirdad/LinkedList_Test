@@ -141,45 +141,62 @@ namespace TestingProject1
             IndexOfD.Should().Be(2);
             list.Count().Should().Be(3);
         }
- //var result = new List<string>(list.GetEnumerator())
         /*[Test]
-        public void GetEnumerable_ReturnsEnumerationInOrder()
-        {
-            // Arrange
-            var list = new MyList<int>();
-            list.Add(1);
-            list.Add(2);
-            list.Add(3);
+            public void Enumerator_MoveNext_should_returnTrue_if_ThereIsAnotherNodeNext()
+            {
+                // Arrange
+                var list = new MyList<int>();
+                list.Add(1);
+                list.Add(2);
+                list.Add(3);
 
-            // Act
-           ;
-            IEnumerator<int> e = list.GetEnumerator();
+                // Act
+                var enumerator = list.GetEnumerator();
 
-            // Assert
-            CollectionAssert.AreEqual(new[] { 1, 2, 3 }, (IEnumerable)e);
-        }
+                // Assert
+                enumerator.MoveNext().Should().BeTrue(); 
+                enumerator.Current.Should().Be(1);
 
+                enumerator.MoveNext().Should().BeTrue(); 
+                enumerator.Current.Should().Be(2);
+
+                enumerator.MoveNext().Should().BeTrue(); 
+                enumerator.Current.Should().Be(3);
+
+                enumerator.MoveNext().Should().BeFalse(); 
+            }*/
 
         [Test]
-        public void GetEnumerable_ReturnsEnumerationInOrder()
+        public void GetEnumerator_Should_returnFalse_if_ListIs_Empty()
         {
             // Arrange
             var list = new MyList<int>();
             list.Add(1);
             list.Add(2);
+            list.Clear();
+
+            // Act
+            var enumerator = list.GetEnumerator();
+
+            // Assert
+            enumerator.MoveNext().Should().BeFalse();
+        }
+
+        [Test]
+        public void GetEnumerator_Should_returnTrue_if_ListIs_NotEmpty()
+        {
+            // Arrange
+            var list = new MyList<int>();
             list.Add(3);
-
-
-            IEnumerator<int> e = list.GetEnumerator();
+            list.Add(2);
 
 
             // Act
-            //IEnumerator<int> e = new List<int>(list.GetEnumerator());
+            var enumerator = list.GetEnumerator();
 
             // Assert
-            CollectionAssert.AreEqual(new[] { 1, 2, 3 }, (IEnumerable)e);
-        }*/
-
-
+            enumerator.MoveNext().Should().BeTrue();
+            enumerator.Current.Should().Be(3);
+        }
     }
 }
