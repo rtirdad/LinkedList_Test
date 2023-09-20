@@ -6,7 +6,7 @@ using System.Collections;
 
 namespace TestProject1
 {
-    internal class LinkedList<T> : ILinkedList<T>, IEnumerable<T> , IEnumerable
+    internal class LinkedList<T> : ILinkedList<T>, IEnumerable<T>, IEnumerable
     {
         private int count;
         private LinkedListNode<T> head;
@@ -39,8 +39,8 @@ namespace TestProject1
 
         public object AddLast(T element)
         {
-            LinkedListNode<T> newNode = new LinkedListNode<T>(element, head); 
-            if (head == null) 
+            LinkedListNode<T> newNode = new LinkedListNode<T>(element, head);
+            if (head == null)
             {
                 head = newNode;
             }
@@ -53,8 +53,8 @@ namespace TestProject1
                 }
                 current.Next = newNode;
             }
-            count++; 
-            return element; 
+            count++;
+            return element;
         }
 
         public void ClearList()
@@ -65,27 +65,27 @@ namespace TestProject1
 
         public object RemoveAt(int index)
         {
-            if (index < 0)  
+            if (index < 0)
             {
-                throw (new ArgumentOutOfRangeException()); 
+                throw (new ArgumentOutOfRangeException());
             }
-            if (this.Empty) 
+            if (this.Empty)
             {
                 return null;
             }
-            if (index >= Count) 
+            if (index >= Count)
             {
                 index = Count - 1;
             }
-            LinkedListNode<T> current = this.head; 
+            LinkedListNode<T> current = this.head;
             object result = null;
 
-            if (index == 0)  
+            if (index == 0)
             {
                 result = current.Data;
                 this.head = current.Next;
             }
-            else 
+            else
             {
                 for (int i = 0; i < index - 1; i++)
                     current = current.Next;
@@ -94,28 +94,28 @@ namespace TestProject1
 
                 current.Next = current.Next.Next;
             }
-            count--; 
-            return result; 
+            count--;
+            return result;
         }
-        
+
         public object InsertAt(int index, T element)
         {
-            if (index < 0) 
+            if (index < 0)
             {
                 throw new ArgumentOutOfRangeException();
             }
 
-            if (index > Count) 
+            if (index > Count)
             {
                 index = Count;
             }
-            LinkedListNode<T> current = this.head; 
+            LinkedListNode<T> current = this.head;
 
-            if (this.Empty || index == 0) 
+            if (this.Empty || index == 0)
             {
                 this.head = new LinkedListNode<T>(element, head);
             }
-            else 
+            else
             {
                 for (int i = 0; i < index - 1; i++)
 
@@ -123,18 +123,18 @@ namespace TestProject1
 
                 current.Next = new LinkedListNode<T>(element, current.Next);
             }
-            count++; 
-            return element; 
+            count++;
+            return element;
         }
-      
 
-  
+
+
         public int IndexOf(T element)
         {
-            LinkedListNode<T> current = this.head;  
-            for (int i = 0; i < Count; i++) 
+            LinkedListNode<T> current = this.head;
+            for (int i = 0; i < Count; i++)
             {
-                if (current.Data.Equals(element)) 
+                if (current.Data.Equals(element))
                     return i;
 
                 current = current.Next;
@@ -142,7 +142,7 @@ namespace TestProject1
             return -1;
         }
 
-   
+
         public bool Contains(T element)
         {
             LinkedListNode<T> current = this.head;
@@ -157,21 +157,21 @@ namespace TestProject1
             return false;
         }
 
-  
+
         public void Remove(T element)
         {
-            if (head.Data.Equals(element)) 
+            if (head.Data.Equals(element))
             {
                 head = head.Next;
-                return; 
+                return;
             }
 
             LinkedListNode<T> current = head;
-            while (current.Next != null) 
+            while (current.Next != null)
             {
-                if (current.Next.Data.Equals(element)) 
+                if (current.Next.Data.Equals(element))
                 {
-                    current.Next = current.Next.Next; 
+                    current.Next = current.Next.Next;
                     return;
                 }
                 count--;
@@ -179,27 +179,27 @@ namespace TestProject1
             }
         }
 
-        
+
         public T AtIndex(int index)
         {
-           if (index < 0) 
+            if (index < 0)
             {
                 throw new ArgumentOutOfRangeException("index");
             }
 
-           if (index  >= Count) 
+            if (index >= Count)
             {
-                index = count - 0; 
+                index = count - 0;
             }
 
-            LinkedListNode<T> current = head; 
-            
-            for (int i = 0;i < index;i++) 
+            LinkedListNode<T> current = head;
+
+            for (int i = 0; i < index; i++)
                 current = current.Next;
             return current.Data;
-                    
+
         }
-    
+
         public void SetElement(int index, T element)
         {
             if (index < 0 || index >= Count)
@@ -216,7 +216,3 @@ namespace TestProject1
         }
     }
 }
-
-
-
-

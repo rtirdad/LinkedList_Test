@@ -4,7 +4,6 @@ using static TestingProject1.Tests;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.VisualBasic;
 using TestProject1;
 
 namespace TestingProject1
@@ -110,7 +109,7 @@ namespace TestingProject1
         }
 
         [Test]
-        public void If_element_is_set_it_should_be_set_at_the_right_index()
+        public void If_element_is_set_it_should_be_set_at_the_rightIndex()
         {
             // Arrange
             var list = new MyList<int>();
@@ -119,11 +118,14 @@ namespace TestingProject1
             list.InsertAt(0, 1);
             list.InsertAt(1, 2);    
             list.InsertAt(2, 3);
+            list.InsertAt(10,10);
             var IndexOfOne = list.IndexOf(1);
+            var IndexOfTen = list.IndexOf(10);
 
             // Assert
+            IndexOfTen.Should().Be(3);
             IndexOfOne.Should().Be(0);
-            list.Count().Should().Be(3);
+            list.Count().Should().Be(4);
         }
 
         [Test]
@@ -141,6 +143,7 @@ namespace TestingProject1
             IndexOfD.Should().Be(2);
             list.Count().Should().Be(3);
         }
+        
         /*[Test]
             public void Enumerator_MoveNext_should_returnTrue_if_ThereIsAnotherNodeNext()
             {
@@ -164,8 +167,8 @@ namespace TestingProject1
                 enumerator.Current.Should().Be(3);
 
                 enumerator.MoveNext().Should().BeFalse(); 
-            }*/
-
+            }
+            */
         [Test]
         public void GetEnumerator_Should_returnFalse_if_ListIs_Empty()
         {
