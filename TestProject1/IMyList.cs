@@ -19,8 +19,8 @@ namespace TestProject1
 }
 
 // 2. Welke methods worden door alle objecten in .NET geïmplementeerd?
-// 
+//  
 
 //3.Kijk naar andere collecties in .NET( Dictionary<Tkey, TValue>, List<T>, HashSet<T>)
 //Implementeren deze collecties allemaal IEnumerable?
-// Dictionary<TKey, TValue> en List<T> imlplementeert IEnumerable wel, maar HashSet<T> niet.
+// Dictionary<TKey, TValue> and List<T> do implement IEnumerable,  but HashSet<T> does not. 

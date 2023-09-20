@@ -168,7 +168,8 @@ namespace TestingProject1
 
                 enumerator.MoveNext().Should().BeFalse(); 
             }
-            */
+        */
+            
         [Test]
         public void GetEnumerator_Should_returnFalse_if_ListIs_Empty()
         {
@@ -193,11 +194,12 @@ namespace TestingProject1
             list.Add(3);
             list.Add(2);
 
-
             // Act
+            
             var enumerator = list.GetEnumerator();
 
             // Assert
+            
             enumerator.MoveNext().Should().BeTrue();
             enumerator.Current.Should().Be(3);
         }
