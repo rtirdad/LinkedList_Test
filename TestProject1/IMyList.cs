@@ -19,8 +19,8 @@ namespace TestProject1
 }
 
 // 2. Welke methods worden door alle objecten in .NET geïmplementeerd?
-//  
+// all Objects implement, Equals, Finalize, GetHashCode, and ToString
 
 //3.Kijk naar andere collecties in .NET( Dictionary<Tkey, TValue>, List<T>, HashSet<T>)
 //Implementeren deze collecties allemaal IEnumerable?
-// Dictionary<TKey, TValue> and List<T> do implement IEnumerable,  but HashSet<T> does not. 
+// Dictionary<TKey, TValue> and List<T> and HashSet<T> all implement IEnumerable. This makes iteration possible.  

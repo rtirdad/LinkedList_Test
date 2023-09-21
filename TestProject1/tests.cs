@@ -183,6 +183,7 @@ namespace TestingProject1
             var enumerator = list.GetEnumerator();
 
             // Assert
+            
             enumerator.MoveNext().Should().BeFalse();
         }
 
@@ -196,7 +197,7 @@ namespace TestingProject1
 
             // Act
             
-            var enumerator = list.GetEnumerator();
+              var enumerator = list.GetEnumerator();
 
             // Assert
             
