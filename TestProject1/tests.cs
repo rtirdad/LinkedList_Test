@@ -144,34 +144,9 @@ namespace TestingProject1
             list.Count().Should().Be(3);
         }
         
-        /*[Test]
-            public void Enumerator_MoveNext_should_returnTrue_if_ThereIsAnotherNodeNext()
-            {
-                // Arrange
-                var list = new MyList<int>();
-                list.Add(1);
-                list.Add(2);
-                list.Add(3);
-
-                // Act
-                var enumerator = list.GetEnumerator();
-
-                // Assert
-                enumerator.MoveNext().Should().BeTrue(); 
-                enumerator.Current.Should().Be(1);
-
-                enumerator.MoveNext().Should().BeTrue(); 
-                enumerator.Current.Should().Be(2);
-
-                enumerator.MoveNext().Should().BeTrue(); 
-                enumerator.Current.Should().Be(3);
-
-                enumerator.MoveNext().Should().BeFalse(); 
-            }
-        */
             
         [Test]
-        public void GetEnumerator_Should_returnFalse_if_ListIs_Empty()
+        public void Enumerator_Should_returnFalse_if_ListIs_Empty()
         {
             // Arrange
             var list = new MyList<int>();
@@ -188,7 +163,7 @@ namespace TestingProject1
         }
 
         [Test]
-        public void GetEnumerator_Should_returnTrue_if_ListIs_NotEmpty()
+        public void Enumerator_Should_returnTrue_if_ListIs_NotEmpty()
         {
             // Arrange
             var list = new MyList<int>();
@@ -196,13 +171,16 @@ namespace TestingProject1
             list.Add(2);
 
             // Act
-            
               var enumerator = list.GetEnumerator();
 
             // Assert
-            
             enumerator.MoveNext().Should().BeTrue();
             enumerator.Current.Should().Be(3);
+
+            enumerator.MoveNext().Should().BeTrue();
+            enumerator.Current.Should().Be(2);
+
+
         }
 
     }

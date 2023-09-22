@@ -29,10 +29,10 @@ namespace TestProject1
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return GetEnumeratorForIEnumerable();
+            return GiveEnumerator();
         }
 
-        public IEnumerator<T> GetEnumeratorForIEnumerable()
+        public IEnumerator<T> GiveEnumerator()
         {
             return GetEnumerator();
         }
@@ -128,8 +128,7 @@ namespace TestProject1
         }
 
 
-
-        public int IndexOf(T element)
+        /*public int IndexOf(T element)
         {
             LinkedListNode<T> current = this.head;
             for (int i = 0; i < Count; i++)
@@ -140,10 +139,33 @@ namespace TestProject1
                 current = current.Next;
             }
             return -1;
+        }*/
+
+        public int IndexOf(T element)
+        {
+            int index = 0;
+            foreach (T item in this)
+            {
+                if (item.Equals(element))
+                    return index;
+                index++;
+            }
+            return -1;
         }
 
 
         public bool Contains(T element)
+        {
+            foreach(T item in this)
+            {
+                if(item.Equals(element))
+                    return true;
+            }
+            return false;
+        }
+
+
+        /*public bool Contain(T element)
         {
             LinkedListNode<T> current = this.head;
 
@@ -155,7 +177,7 @@ namespace TestProject1
                 current = current.Next;
             }
             return false;
-        }
+        }*/
 
 
         public void Remove(T element)
