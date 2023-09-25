@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections;
+using System.Linq;
 
 
 namespace TestProject1
@@ -14,6 +15,8 @@ namespace TestProject1
         public int Count => count;
 
         public bool Empty => Count == 0;
+
+        //Array random = Array.CreateInstance(typeof(int), 10); 
 
         public T this[int index] { get => AtIndex(index); set => SetElement(index, value); }
 
@@ -164,22 +167,6 @@ namespace TestProject1
             return false;
         }
 
-
-        /*public bool Contain(T element)
-        {
-            LinkedListNode<T> current = this.head;
-
-            for (int i = 0; i < Count; i++)
-            {
-                if (current.Data.Equals(element))
-                    return true;
-
-                current = current.Next;
-            }
-            return false;
-        }*/
-
-
         public void Remove(T element)
         {
             if (head.Data.Equals(element))
@@ -200,7 +187,6 @@ namespace TestProject1
                 current = current.Next;
             }
         }
-
 
         public T AtIndex(int index)
         {

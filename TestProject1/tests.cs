@@ -171,7 +171,7 @@ namespace TestingProject1
             list.Add(2);
 
             // Act
-              var enumerator = list.GetEnumerator();
+            var enumerator = list.GetEnumerator();
 
             // Assert
             enumerator.MoveNext().Should().BeTrue();
@@ -180,6 +180,39 @@ namespace TestingProject1
             enumerator.MoveNext().Should().BeTrue();
             enumerator.Current.Should().Be(2);
 
+
+        }
+
+        [Test]
+        public void When_a_list_is_cleared_it_should_be_emp()
+        {
+            // Arrange
+            var list = new MyList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list.Add(4);
+
+
+            //act
+            IEnumerable<int> Numbers = Enumerable.Where(list, n => n >2);
+
+            var enumerator = Numbers.GetEnumerator();
+
+            //assert
+            enumerator.MoveNext().Should().BeTrue();
+            enumerator.Current.Should().Be(3);
+
+
+            /*IEnumerable<int> QuerySyntax = from obj in list
+                                           where obj > 2
+                                           select obj;
+
+            //var enumerator = list.GetEnumerator();
+            var query = QuerySyntax.GetEnumerator();
+            // Assert
+            query.MoveNext().Should().BeTrue();
+            query.Current.Should().Be(3);*/
 
         }
 
