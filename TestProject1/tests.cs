@@ -212,19 +212,13 @@ namespace TestingProject1
             list.Add(4);
 
 
-            //act
-            IEnumerable<int> Numbers = Enumerable.Where(list, n => n > 2);
-
+            // Act
+            IEnumerable<int> Numbers = list.Where(n => n > 2);
             var enumerator = Numbers.GetEnumerator();
 
-            //assert
-            IEnumerable<int> QuerySyntax = from obj in list
-                                           where obj > 2
-                                           select obj;
-            var query = QuerySyntax.GetEnumerator();
             // Assert
-            query.MoveNext().Should().BeTrue();
-            query.Current.Should().Be(3);
+            enumerator.MoveNext().Should().BeTrue();
+            enumerator.Current.Should().Be(3);
         }
 
         [Test]
