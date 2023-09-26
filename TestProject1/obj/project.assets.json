@@ -1128,19 +1128,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\CityGIS\\.nuget\\packages\\": {}
+    "C:\\Users\\31616\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\CityGIS\\Desktop\\C#\\LinkedList_Test\\TestProject1\\TestProject1.csproj",
+      "projectUniqueName": "C:\\Users\\31616\\Desktop\\c#\\LinkedList_Test\\TestProject1\\TestProject1.csproj",
       "projectName": "TestProject1",
-      "projectPath": "C:\\Users\\CityGIS\\Desktop\\C#\\LinkedList_Test\\TestProject1\\TestProject1.csproj",
-      "packagesPath": "C:\\Users\\CityGIS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\CityGIS\\Desktop\\C#\\LinkedList_Test\\TestProject1\\obj\\",
+      "projectPath": "C:\\Users\\31616\\Desktop\\c#\\LinkedList_Test\\TestProject1\\TestProject1.csproj",
+      "packagesPath": "C:\\Users\\31616\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\31616\\Desktop\\c#\\LinkedList_Test\\TestProject1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\CityGIS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\31616\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1207,7 +1207,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

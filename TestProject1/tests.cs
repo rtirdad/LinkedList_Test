@@ -10,7 +10,7 @@ namespace TestingProject1
 {
     public class Tests
     {
-       [Test]
+        [Test]
         public void When_a_list_is_cleared_it_should_be_empty()
         {
             // Arrange
@@ -41,10 +41,10 @@ namespace TestingProject1
         {
             // Arrange
             var list = new MyList<int>();
-            list.InsertAt(2,4);
+            list.InsertAt(2, 4);
             list.InsertAt(0, 4);
             list.Clear();
-             
+
             // Assert
             list.Count().Should().Be(0);
         }
@@ -56,9 +56,9 @@ namespace TestingProject1
             var list = new MyList<int>();
 
             //Act
-           
+
             list.Add(1);
-            var IndexOfTwo = list.IndexOf(1);  
+            var IndexOfTwo = list.IndexOf(1);
             // Assert
 
             list.Count().Should().Be(1);
@@ -71,7 +71,7 @@ namespace TestingProject1
             // Arrange
             var list = new MyList<int>();
 
-            list.InsertAt(0,1);
+            list.InsertAt(0, 1);
             var ContainOne = list.Contains(1);
             var ContainTwo = list.Contains(2);
 
@@ -116,9 +116,9 @@ namespace TestingProject1
 
             // Act
             list.InsertAt(0, 1);
-            list.InsertAt(1, 2);    
+            list.InsertAt(1, 2);
             list.InsertAt(2, 3);
-            list.InsertAt(10,10);
+            list.InsertAt(10, 10);
             var IndexOfOne = list.IndexOf(1);
             var IndexOfTen = list.IndexOf(10);
 
@@ -143,8 +143,8 @@ namespace TestingProject1
             IndexOfD.Should().Be(2);
             list.Count().Should().Be(3);
         }
-        
-            
+
+
         [Test]
         public void Enumerator_Should_returnFalse_if_ListIs_Empty()
         {
@@ -158,7 +158,7 @@ namespace TestingProject1
             var enumerator = list.GetEnumerator();
 
             // Assert
-            
+
             enumerator.MoveNext().Should().BeFalse();
         }
 
@@ -184,6 +184,24 @@ namespace TestingProject1
         }
 
         [Test]
+        public void Where_ShouldFilterElementsBasedOnPredicate()
+        {
+            // Arrange
+            var list = new MyList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list.Add(4);
+            list.Add(5);
+
+            // Act
+            var result = list.Where(x => x % 2 == 0);
+
+            // Assert
+            result.Should().ContainInOrder(2, 4);
+        }
+
+        [Test]
         public void When_a_list_is_cleared_it_should_be_emp()
         {
             // Arrange
@@ -195,26 +213,84 @@ namespace TestingProject1
 
 
             //act
-            IEnumerable<int> Numbers = Enumerable.Where(list, n => n >2);
+            IEnumerable<int> Numbers = Enumerable.Where(list, n => n > 2);
 
             var enumerator = Numbers.GetEnumerator();
 
             //assert
-            enumerator.MoveNext().Should().BeTrue();
-            enumerator.Current.Should().Be(3);
-
-
-            /*IEnumerable<int> QuerySyntax = from obj in list
+            IEnumerable<int> QuerySyntax = from obj in list
                                            where obj > 2
                                            select obj;
-
-            //var enumerator = list.GetEnumerator();
             var query = QuerySyntax.GetEnumerator();
             // Assert
             query.MoveNext().Should().BeTrue();
-            query.Current.Should().Be(3);*/
-
+            query.Current.Should().Be(3);
         }
 
+        [Test]
+        public void Select_ShouldTransformElementsCorrectly()
+        {
+            // Arrange
+            var list = new MyList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+
+            // Act
+            var result = list.Select(x => x * 2);
+
+            // Assert
+            result.Should().BeEquivalentTo(2, 4, 6);
+        }
+
+        [Test]
+        public void Any_ShouldReturnTrueIfAnyElementSatisfiesPredicate()
+        {
+            // Arrange
+            var linkedList = new LinkedList<int>();
+            linkedList.AddLast(1);
+            linkedList.AddLast(2);
+            linkedList.AddLast(3);
+
+            // Act & Assert
+            linkedList.Any(x => x > 2).Should().BeTrue();
+            linkedList.Any(x => x > 5).Should().BeFalse();
+        }
+
+        [Test]
+        public void Where_ShouldFilterElementsBasedOnPredic()
+        {
+            // Arrange
+            var linkedList = new LinkedList<int>();
+            linkedList.AddLast(1);
+            linkedList.AddLast(2);
+            linkedList.AddLast(3);
+
+            // Act & Assert
+            linkedList.FirstOrDefault(x => x > 2).Should().Be(3);
+            linkedList.FirstOrDefault(x => x > 5).Should().Be(0); // Default value for int
+        }
+
+        [Test]
+        public void Where_ShouldFilterElementsBasedOnPredicate()
+        {
+            // Arrange
+            var linkedList = new LinkedList<int>();
+            linkedList.AddLast(1);
+            linkedList.AddLast(2);
+            linkedList.AddLast(3);
+
+            // Act
+            var result = linkedList.Where(x => x > 1);
+
+            // Assert
+            result.Should().BeEquivalentTo(2, 3);
+        }
+
+
+
     }
+
+
+
 }
