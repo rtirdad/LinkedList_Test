@@ -179,10 +179,7 @@ namespace TestingProject1
 
             enumerator.MoveNext().Should().BeTrue();
             enumerator.Current.Should().Be(2);
-
-
         }
-
 
         [Test]
         public void Select_ShouldTransformElementsCorrectly()
@@ -274,10 +271,10 @@ namespace TestingProject1
             var list = new MyList<string>();
             list.InsertAt(0, "Time");
             list.InsertAt(1, "Will");
-            list.InsertAt(2, "Tell");   
+            list.InsertAt(2, "Tell");
 
             //Act
-            var TWords = list.Where(e => e.StartsWith("T"));
+            var TWords = list.Where(i => i.StartsWith("T")) ;
             var enumerator = TWords.GetEnumerator();
 
             //Assert
@@ -290,6 +287,65 @@ namespace TestingProject1
 
             enumerator.MoveNext().Should().BeFalse();
         }
+
+
+        [Test]
+        public void Skip_should_skip_elements()
+        {
+            //Arrange
+            var list = new MyList<string>();
+            list.InsertAt(0, "Time");
+            list.InsertAt(1, "Will");
+            list.InsertAt(2, "Tell");
+
+            //Act
+            var TWords = list.Skip(1);
+            var enumerator = TWords.GetEnumerator();
+
+            //Assert
+            enumerator.MoveNext().Should().BeTrue();
+            enumerator.Current.Should().Be("Will");
+
+            enumerator.MoveNext().Should().BeTrue();
+            enumerator.Current.Should().Be("Tell");
+
+
+            enumerator.MoveNext().Should().BeFalse();
+        }
+
+
+        [Test]
+        public void List_OrderByDecending()
+        {
+            //Arrange
+            var list = new MyList<string>();
+            list.InsertAt(0, "Pears");
+            list.InsertAt(1, "Oranges");
+            list.InsertAt(2, "Apple");
+            list.InsertAt(2, "Watermelon");
+
+
+            //Act
+            var TWords = list.OrderBy(x => x).ToList();
+            var enumerator = TWords.GetEnumerator();
+
+            //Assert
+            enumerator.MoveNext().Should().BeTrue();
+            enumerator.Current.Should().Be("Apple");
+
+            enumerator.MoveNext().Should().BeTrue();
+            enumerator.Current.Should().Be("Oranges");
+
+            enumerator.MoveNext().Should().BeTrue();
+            enumerator.Current.Should().Be("Pears");
+
+            enumerator.MoveNext().Should().BeTrue();
+            enumerator.Current.Should().Be("Watermelon");
+
+            enumerator.MoveNext().Should().BeFalse();
+
+        }
+
 
 
 
