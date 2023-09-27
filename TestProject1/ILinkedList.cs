@@ -18,5 +18,7 @@ namespace TestProject1
         T this[int index] { get; set; }
         T AtIndex(int index);
         void SetElement(int index, T element);
+        //bool Any(Func<T, bool> predicate);
+        //T FirstOrDefault(Func<T, bool> predicate);
     }
 }

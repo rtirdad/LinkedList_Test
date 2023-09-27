@@ -183,69 +183,32 @@ namespace TestingProject1
 
         }
 
-        /*[Test]
-        public void Where_ShouldFilterElementsBasedOnPredicate()
-        {
-            // Arrange
-            var list = new MyList<int>();
-            list.Add(1);
-            list.Add(2);
-            list.Add(3);
-            list.Add(4);
-            list.Add(5);
-
-            // Act
-            var result = list.Where(x => x % 2 == 0);
-
-            // Assert
-            result.Should().ContainInOrder(2, 4);
-        }*/
-
-        [Test]
-        public void When_a_list_is_cleared_it_should_be_emp()
-        {
-            // Arrange
-            var list = new MyList<int>();
-            list.Add(1);
-            list.Add(2);
-            list.Add(3);
-            list.Add(4);
-
-
-            // Act
-            IEnumerable<int> Numbers = list.Where(n => n > 2);
-            var enumerator = Numbers.GetEnumerator();
-
-            // Assert
-            enumerator.MoveNext().Should().BeTrue();
-            enumerator.Current.Should().Be(3);
-        }
 
         [Test]
         public void Select_ShouldTransformElementsCorrectly()
         {
             // Arrange
             var list = new MyList<int>();
-            list.Add(1);
-            list.Add(2);
-            list.Add(3);
+            list.InsertAt(0, 1);
+            list.InsertAt(1, 2);
+            list.InsertAt(2, 3);
+            list.InsertAt(3, 4);
 
             // Act
             var result = list.Select(x => x * 2);
 
             // Assert
             result.Should().ContainInOrder(2, 4, 6);
-            //result.Should().BeEquivalentTo(2, 4, 6);
         }
 
         [Test]
-        public void Any_ShouldReturnTrueIfAnyElementSatisfiesPredicate()
+        public void Any_ShouldReturn_true_if_element_is_inList()
         {
             // Arrange
             var list = new MyList<int>();
-            list.Add(1);
-            list.Add(2);
-            list.Add(3);
+            list.InsertAt(0, 1);
+            list.InsertAt(1, 2);
+            list.InsertAt(2, 3);
 
             // Act & Assert
             list.Any(x => x > 2).Should().BeTrue();
@@ -254,13 +217,13 @@ namespace TestingProject1
         /**/
 
         [Test]
-        public void Where_ShouldFilterElementsBasedOnPredic()
+        public void FirstOrDefault_should_return_First_or_default()
         {
             // Arrange
             var list = new MyList<int>();
-            list.Add(1);
-            list.Add(2);
-            list.Add(3);
+            list.InsertAt(0,1);
+            list.InsertAt(1,2);
+            list.InsertAt(2, 3);
 
             // Act & Assert
             list.FirstOrDefault(x => x > 2).Should().Be(3);
@@ -268,13 +231,13 @@ namespace TestingProject1
         }
 
         [Test]
-        public void Where_ShouldFilterElementsBasedOnPredicate()
+        public void Where_Should_Return_FilteredElements()
         {
             // Arrange
             var list = new MyList<int>();
-            list.Add(1);
-            list.Add(2);
-            list.Add(3);
+            list.InsertAt(0, 1);
+            list.InsertAt(1, 2);
+            list.InsertAt(2, 3);
 
             // Act
             var result = list.Where(x => x > 1);
@@ -284,22 +247,50 @@ namespace TestingProject1
         }
 
         [Test]
-        public void Where_should_return_evenNumber()
+        public void return_evenNumber_using_where()
         {
             // Arrange
             var list = new MyList<int>();
-            list.Add(1);
-            list.Add(2);
-            list.Add(3);
-            list.Add(4);
+            list.InsertAt(0, 1);
+            list.InsertAt(1, 2);
+            list.InsertAt(2, 3);
+            list.InsertAt(3, 4);
+
 
             // Act
             IEnumerable<int> EvenNumbers = Enumerable.Where(list,n => n % 2 ==0);
-            //var enumerator = Numbers.GetEnumerator();
+            var enumerator = EvenNumbers.GetEnumerator();
 
             // Assert
-            list.Count.Should().Be(2);
+            enumerator.MoveNext().Should().BeTrue();
+            enumerator.Current.Should().Be(2);
         }
+
+
+        [Test]
+        public void where_should_return_all_strings_That_starts_with_T()
+        {
+            //Arrange
+            var list = new MyList<string>();
+            list.InsertAt(0, "Time");
+            list.InsertAt(1, "Will");
+            list.InsertAt(2, "Tell");   
+
+            //Act
+            var TWords = list.Where(e => e.StartsWith("T"));
+            var enumerator = TWords.GetEnumerator();
+
+            //Assert
+            enumerator.MoveNext().Should().BeTrue();
+            enumerator.Current.Should().Be("Time");
+
+            enumerator.MoveNext().Should().BeTrue();
+            enumerator.Current.Should().Be("Tell");
+
+
+            enumerator.MoveNext().Should().BeFalse();
+        }
+
 
 
     }

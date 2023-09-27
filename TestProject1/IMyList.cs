@@ -15,6 +15,8 @@ namespace TestProject1
         void Add(T element);
         bool Contains(T element);
         void Remove(T element);
+        /*bool Any(Func<T, bool> predicate);
+        T FirstOrDefault(Func<T, bool> predicate);*/
     }
 
 }
