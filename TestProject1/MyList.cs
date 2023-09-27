@@ -63,5 +63,50 @@ namespace TestProject1
         {
             return GetEnumerator();
         }
+
+
+        /*public IEnumerable<T> Where(Func<T, bool> predicate)
+        {
+            foreach (T item in this)
+            {
+                if (predicate(item))
+                {
+                    yield return item;
+                }
+            }
+        
+
+        public IEnumerable<TResult> Select<TResult>(Func<T, TResult> selector)
+        {
+            foreach (T item in this)
+            {
+                yield return selector(item);
+            }
+        }
+
+        public bool Any(Func<T, bool> predicate)
+        {
+            foreach (T item in this)
+            {
+                if (predicate(item))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public T FirstOrDefault(Func<T, bool> predicate)
+        {
+            foreach (T item in this)
+            {
+                if (predicate(item))
+                {
+                    return item;
+                }
+            }
+            return default(T);
+        }}*/
     }
 }
+

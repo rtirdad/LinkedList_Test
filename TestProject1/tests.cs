@@ -221,7 +221,7 @@ namespace TestingProject1
             enumerator.Current.Should().Be(3);
         }
 
-        /*[Test]
+        [Test]
         public void Select_ShouldTransformElementsCorrectly()
         {
             // Arrange
@@ -251,7 +251,7 @@ namespace TestingProject1
             list.Any(x => x > 2).Should().BeTrue();
             list.Any(x => x > 5).Should().BeFalse();
         }
-        */
+        /**/
 
         [Test]
         public void Where_ShouldFilterElementsBasedOnPredic()
@@ -294,14 +294,12 @@ namespace TestingProject1
             list.Add(4);
 
             // Act
-            IEnumerable<int> EvenNumbers = list.Where(n => n % 2 ==0);
+            IEnumerable<int> EvenNumbers = Enumerable.Where(list,n => n % 2 ==0);
             //var enumerator = Numbers.GetEnumerator();
 
             // Assert
             list.Count.Should().Be(2);
         }
-
-
 
 
     }
