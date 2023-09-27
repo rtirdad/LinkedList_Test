@@ -63,7 +63,6 @@ namespace TestProject1
         {
             return GetEnumerator();
         }
-
        
         /*public IEnumerable<T> Where(Func<T, bool> predicate)
         {

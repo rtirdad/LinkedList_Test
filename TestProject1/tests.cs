@@ -1,5 +1,5 @@
 using FluentAssertions;
-using System.Linq;
+//using System.Linq;
 using static TestingProject1.Tests;
 using NUnit.Framework;
 using System.Collections;
@@ -182,7 +182,7 @@ namespace TestingProject1
         }
 
         [Test]
-        public void Select_ShouldTransformElementsCorrectly()
+        public void Select_Should_return_selected_elements()
         {
             // Arrange
             var list = new MyList<int>();
@@ -324,7 +324,6 @@ namespace TestingProject1
             list.InsertAt(2, "Apple");
             list.InsertAt(2, "Watermelon");
 
-
             //Act
             var TWords = list.OrderBy(x => x).ToList();
             var enumerator = TWords.GetEnumerator();
@@ -343,11 +342,7 @@ namespace TestingProject1
             enumerator.Current.Should().Be("Watermelon");
 
             enumerator.MoveNext().Should().BeFalse();
-
         }
-
-
-
 
     }
 
