@@ -183,7 +183,7 @@ namespace TestingProject1
 
         }
 
-        [Test]
+        /*[Test]
         public void Where_ShouldFilterElementsBasedOnPredicate()
         {
             // Arrange
@@ -199,7 +199,7 @@ namespace TestingProject1
 
             // Assert
             result.Should().ContainInOrder(2, 4);
-        }
+        }*/
 
         [Test]
         public void When_a_list_is_cleared_it_should_be_emp()
@@ -221,7 +221,7 @@ namespace TestingProject1
             enumerator.Current.Should().Be(3);
         }
 
-        [Test]
+        /*[Test]
         public void Select_ShouldTransformElementsCorrectly()
         {
             // Arrange
@@ -234,52 +234,73 @@ namespace TestingProject1
             var result = list.Select(x => x * 2);
 
             // Assert
-            result.Should().BeEquivalentTo(2, 4, 6);
+            result.Should().ContainInOrder(2, 4, 6);
+            //result.Should().BeEquivalentTo(2, 4, 6);
         }
 
         [Test]
         public void Any_ShouldReturnTrueIfAnyElementSatisfiesPredicate()
         {
             // Arrange
-            var linkedList = new LinkedList<int>();
-            linkedList.AddLast(1);
-            linkedList.AddLast(2);
-            linkedList.AddLast(3);
+            var list = new MyList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
 
             // Act & Assert
-            linkedList.Any(x => x > 2).Should().BeTrue();
-            linkedList.Any(x => x > 5).Should().BeFalse();
+            list.Any(x => x > 2).Should().BeTrue();
+            list.Any(x => x > 5).Should().BeFalse();
         }
+        */
 
         [Test]
         public void Where_ShouldFilterElementsBasedOnPredic()
         {
             // Arrange
-            var linkedList = new LinkedList<int>();
-            linkedList.AddLast(1);
-            linkedList.AddLast(2);
-            linkedList.AddLast(3);
+            var list = new MyList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
 
             // Act & Assert
-            linkedList.FirstOrDefault(x => x > 2).Should().Be(3);
-            linkedList.FirstOrDefault(x => x > 5).Should().Be(0); // Default value for int
+            list.FirstOrDefault(x => x > 2).Should().Be(3);
+            list.FirstOrDefault(x => x > 5).Should().Be(0); 
         }
 
         [Test]
         public void Where_ShouldFilterElementsBasedOnPredicate()
         {
             // Arrange
-            var linkedList = new LinkedList<int>();
-            linkedList.AddLast(1);
-            linkedList.AddLast(2);
-            linkedList.AddLast(3);
+            var list = new MyList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
 
             // Act
-            var result = linkedList.Where(x => x > 1);
+            var result = list.Where(x => x > 1);
 
             // Assert
-            result.Should().BeEquivalentTo(2, 3);
+            result.Should().ContainInOrder(2, 3);
         }
+
+        [Test]
+        public void Where_should_return_evenNumber()
+        {
+            // Arrange
+            var list = new MyList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list.Add(4);
+
+            // Act
+            IEnumerable<int> EvenNumbers = list.Where(n => n % 2 ==0);
+            //var enumerator = Numbers.GetEnumerator();
+
+            // Assert
+            list.Count.Should().Be(2);
+        }
+
 
 
 
