@@ -84,7 +84,6 @@ namespace TestProject1
             return _list.FirstOrDefault(predicate);
         }*/
 
-
     }
 }
 

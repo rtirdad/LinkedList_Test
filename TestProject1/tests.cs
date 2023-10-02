@@ -253,7 +253,6 @@ namespace TestingProject1
             list.InsertAt(2, 3);
             list.InsertAt(3, 4);
 
-
             // Act
             IEnumerable<int> EvenNumbers = Enumerable.Where(list,n => n % 2 ==0);
             var enumerator = EvenNumbers.GetEnumerator();
@@ -269,20 +268,20 @@ namespace TestingProject1
         {
             //Arrange
             var list = new MyList<string>();
-            list.InsertAt(0, "Time");
-            list.InsertAt(1, "Will");
-            list.InsertAt(2, "Tell");
+            list.InsertAt(0, "Blueberry");
+            list.InsertAt(1, "Banana");
+            list.InsertAt(2, "Apple");
 
             //Act
-            var TWords = list.Where(i => i.StartsWith("T")) ;
+            var TWords = list.Where(i => i.StartsWith("B")) ;
             var enumerator = TWords.GetEnumerator();
 
             //Assert
             enumerator.MoveNext().Should().BeTrue();
-            enumerator.Current.Should().Be("Time");
+            enumerator.Current.Should().Be("Blueberry");
 
             enumerator.MoveNext().Should().BeTrue();
-            enumerator.Current.Should().Be("Tell");
+            enumerator.Current.Should().Be("Banana");
 
 
             enumerator.MoveNext().Should().BeFalse();
@@ -294,20 +293,19 @@ namespace TestingProject1
         {
             //Arrange
             var list = new MyList<string>();
-            list.InsertAt(0, "Time");
-            list.InsertAt(1, "Will");
-            list.InsertAt(2, "Tell");
-
+            list.InsertAt(0, "Blurberry");
+            list.InsertAt(1, "Banana");
+            list.InsertAt(2, "Apple");
             //Act
             var TWords = list.Skip(1);
             var enumerator = TWords.GetEnumerator();
 
             //Assert
             enumerator.MoveNext().Should().BeTrue();
-            enumerator.Current.Should().Be("Will");
+            enumerator.Current.Should().Be("Banana");
 
             enumerator.MoveNext().Should().BeTrue();
-            enumerator.Current.Should().Be("Tell");
+            enumerator.Current.Should().Be("Apple");
 
 
             enumerator.MoveNext().Should().BeFalse();
