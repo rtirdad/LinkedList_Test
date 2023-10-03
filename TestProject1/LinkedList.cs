@@ -4,10 +4,9 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 
-
 namespace TestProject1
 {
-    internal class LinkedList<T> : ILinkedList<T>, IEnumerable<T>, IEnumerable
+    public class LinkedList<T> : ILinkedList<T>, IEnumerable<T>, IEnumerable
     {
         private int count;
         private LinkedListNode<T> head;
@@ -223,47 +222,5 @@ namespace TestProject1
             current.Data = element;
         }
 
-        /*public IEnumerable<T> Where(Func<T, bool> predicate)
-        {
-            foreach (T item in this)
-            {
-                if (predicate(item))
-                {
-                    yield return item;
-                }
-            }
-        }
-
-        public IEnumerable<TResult> Select<TResult>(Func<T, TResult> selector)
-        {
-            foreach (T item in this)
-            {
-                yield return selector(item);
-            }
-        }
-
-        public bool Any(Func<T, bool> predicate)
-        {
-            foreach (T item in this)
-            {
-                if (predicate(item))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public T FirstOrDefault(Func<T, bool> predicate)
-        {
-            foreach (T item in this)
-            {
-                if (predicate(item))
-                {
-                    return item;
-                }
-            }
-            return default(T);
-        }*/
     }
 }

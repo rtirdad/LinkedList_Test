@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace TestProject1
 {
-    internal class MyList<T> : IMyList<T>, IEnumerable<T>
+    public class MyList<T> : IMyList<T>, IEnumerable<T>
     {
         LinkedList<T> _list = new LinkedList<T>();
 
@@ -63,26 +63,6 @@ namespace TestProject1
         {
             return GetEnumerator();
         }
-       
-        /*public IEnumerable<T> Where(Func<T, bool> predicate)
-        {
-            return _list.Where(predicate);
-        }
-
-        public IEnumerable<TResult> Select<TResult>(Func<T, TResult> selector)
-        {
-            return _list.Select(selector);
-        }
-
-        public bool Any(Func<T, bool> predicate)
-        {
-            return _list.Any(predicate);
-        }
-
-        public T FirstOrDefault(Func<T, bool> predicate)
-        {
-            return _list.FirstOrDefault(predicate);
-        }*/
 
     }
 }

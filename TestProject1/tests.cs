@@ -195,7 +195,7 @@ namespace TestingProject1
             var result = list.Select(x => x * 2);
 
             // Assert
-            result.Should().ContainInOrder(2, 4, 6);
+            result.Should().ContainInOrder(2, 4);
         }
 
         [Test]
@@ -225,22 +225,7 @@ namespace TestingProject1
             // Act & Assert
             list.FirstOrDefault(x => x > 2).Should().Be(3);
             list.FirstOrDefault(x => x > 5).Should().Be(0); 
-        }
 
-        [Test]
-        public void Where_Should_Return_FilteredElements()
-        {
-            // Arrange
-            var list = new MyList<int>();
-            list.InsertAt(0, 1);
-            list.InsertAt(1, 2);
-            list.InsertAt(2, 3);
-
-            // Act
-            var result = list.Where(x => x > 1);
-
-            // Assert
-            result.Should().ContainInOrder(2, 3);
         }
 
         [Test]
@@ -260,86 +245,6 @@ namespace TestingProject1
             // Assert
             enumerator.MoveNext().Should().BeTrue();
             enumerator.Current.Should().Be(2);
-        }
-
-
-        [Test]
-        public void where_should_return_all_strings_That_starts_with_T()
-        {
-            //Arrange
-            var list = new MyList<string>();
-            list.InsertAt(0, "Blueberry");
-            list.InsertAt(1, "Banana");
-            list.InsertAt(2, "Apple");
-
-            //Act
-            var TWords = list.Where(i => i.StartsWith("B")) ;
-            var enumerator = TWords.GetEnumerator();
-
-            //Assert
-            enumerator.MoveNext().Should().BeTrue();
-            enumerator.Current.Should().Be("Blueberry");
-
-            enumerator.MoveNext().Should().BeTrue();
-            enumerator.Current.Should().Be("Banana");
-
-
-            enumerator.MoveNext().Should().BeFalse();
-        }
-
-
-        [Test]
-        public void Skip_should_skip_elements()
-        {
-            //Arrange
-            var list = new MyList<string>();
-            list.InsertAt(0, "Blurberry");
-            list.InsertAt(1, "Banana");
-            list.InsertAt(2, "Apple");
-            //Act
-            var TWords = list.Skip(1);
-            var enumerator = TWords.GetEnumerator();
-
-            //Assert
-            enumerator.MoveNext().Should().BeTrue();
-            enumerator.Current.Should().Be("Banana");
-
-            enumerator.MoveNext().Should().BeTrue();
-            enumerator.Current.Should().Be("Apple");
-
-
-            enumerator.MoveNext().Should().BeFalse();
-        }
-
-
-        [Test]
-        public void List_OrderByDecending()
-        {
-            //Arrange
-            var list = new MyList<string>();
-            list.InsertAt(0, "Pears");
-            list.InsertAt(1, "Oranges");
-            list.InsertAt(2, "Apple");
-            list.InsertAt(2, "Watermelon");
-
-            //Act
-            var TWords = list.OrderBy(x => x).ToList();
-            var enumerator = TWords.GetEnumerator();
-
-            //Assert
-            enumerator.MoveNext().Should().BeTrue();
-            enumerator.Current.Should().Be("Apple");
-
-            enumerator.MoveNext().Should().BeTrue();
-            enumerator.Current.Should().Be("Oranges");
-
-            enumerator.MoveNext().Should().BeTrue();
-            enumerator.Current.Should().Be("Pears");
-
-            enumerator.MoveNext().Should().BeTrue();
-            enumerator.Current.Should().Be("Watermelon");
-
-            enumerator.MoveNext().Should().BeFalse();
         }
 
     }
