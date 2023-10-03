@@ -123,6 +123,125 @@ namespace TestingProject1
             IndexOfD.Should().Be(2);
             list.Count().Should().Be(3);
         }
+        [Test]
+        public void Enumerator_Should_returnFalse_if_ListIs_Empty()
+        {
+            // Arrange
+            var list = new MyList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Clear();
 
+            // Act
+            var enumerator = list.GetEnumerator();
+
+            // Assert
+
+            enumerator.MoveNext().Should().BeFalse();
+        }
+
+        [Test]
+        public void Enumerator_Should_returnTrue_if_ListIs_NotEmpty()
+        {
+            // Arrange
+            var list = new MyList<int>();
+            list.Add(3);
+            list.Add(2);
+
+            // Act
+            var enumerator = list.GetEnumerator();
+
+            // Assert
+            enumerator.MoveNext().Should().BeTrue();
+            enumerator.Current.Should().Be(3);
+
+            enumerator.MoveNext().Should().BeTrue();
+            enumerator.Current.Should().Be(2);
+        }
+
+        [Test]
+        public void Select_Should_return_selected_elements()
+        {
+            // Arrange
+            var list = new MyList<int>();
+            list.InsertAt(0, 1);
+            list.InsertAt(1, 2);
+            list.InsertAt(2, 3);
+            list.InsertAt(3, 4);
+
+            // Act
+            var result = list.Select(x => x * 2);
+
+            // Assert
+            result.Should().ContainInOrder(2, 4, 6);
+        }
+
+        [Test]
+        public void Any_ShouldReturn_true_if_element_is_inList()
+        {
+            // Arrange
+            var list = new MyList<int>();
+            list.InsertAt(0, 1);
+            list.InsertAt(1, 2);
+            list.InsertAt(2, 3);
+
+            // Act & Assert
+            list.Any(x => x > 2).Should().BeTrue();
+            list.Any(x => x > 5).Should().BeFalse();
+        }
+        /**/
+
+        [Test]
+        public void FirstOrDefault_should_return_First_or_default()
+        {
+            // Arrange
+            var list = new MyList<int>();
+            list.InsertAt(0, 1);
+            list.InsertAt(1, 2);
+            list.InsertAt(2, 3);
+
+            // Act & Assert
+            list.FirstOrDefault(x => x > 2).Should().Be(3);
+            list.FirstOrDefault(x => x > 5).Should().Be(0);
+        }
+
+        [Test]
+        public void Where_Should_Return_FilteredElements()
+        {
+            // Arrange
+            var list = new MyList<int>();
+            list.InsertAt(0, 1);
+            list.InsertAt(1, 2);
+            list.InsertAt(2, 3);
+
+            // Act
+            var result = list.Where(x => x > 1);
+
+            // Assert
+            result.Should().ContainInOrder(2, 3);
+        }
+
+        [Test]
+        public void return_evenNumber_using_where()
+        {
+            // Arrange
+            var list = new MyList<int>();
+            list.InsertAt(0, 1);
+            list.InsertAt(1, 2);
+            list.InsertAt(2, 3);
+            list.InsertAt(3, 4);
+
+            // Act
+            IEnumerable<int> EvenNumbers = Enumerable.Where(list, n => n % 2 == 0);
+            var enumerator = EvenNumbers.GetEnumerator();
+
+            // Assert
+            enumerator.MoveNext().Should().BeTrue();
+            enumerator.Current.Should().Be(2);
+        }
+     
     }
+
+
+
 }

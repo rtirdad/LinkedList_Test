@@ -1,32 +1,23 @@
-﻿using NUnit.Framework;
-using System;
-//using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TestProject1;
 
 namespace TestProject1
 {
-    internal class MyList<T> : IMyList<T>
-
+    public class MyList<T> : IMyList<T>, IEnumerable<T>
     {
         private LinkedListNode<T> head;
         LinkedList<T> _list = new LinkedList<T>();
 
-        public void LinkedListNode()
-        {
-            this.head = null;
-        }
-
         public int Count()
-        { 
+        {
             return _list.Count;
         }
 
         public void InsertAt(int index, T element)
         {
-           _list.InsertAt(index, element);
+            _list.InsertAt(index, element);
         }
 
         public void Add(T element)
@@ -46,10 +37,10 @@ namespace TestProject1
 
         public int IndexOf(T element)
         {
-          return _list.IndexOf(element);
+            return _list.IndexOf(element);
         }
 
-       public bool Contains(T element)
+        public bool Contains(T element)
         {
             return _list.Contains(element);
         }
@@ -59,6 +50,38 @@ namespace TestProject1
             _list.Remove(element);
         }
 
-        public T this[int index] { get => _list.AtIndex(index); set => _list.SetElement(index, value); }
+        public T this[int index]
+        {
+            get => _list.AtIndex(index);
+            set => _list.SetElement(index, value);
+        }
+
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return _list.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+
+        /*public IEnumerator<T> GetEnumerator()
+        {
+            LinkedListNode<T> current = head;
+            while (current != null)
+            {
+                yield return current.Data;
+                current = current.Next;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }*/
     }
 }
+
