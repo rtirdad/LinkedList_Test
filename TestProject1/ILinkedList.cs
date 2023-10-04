@@ -8,7 +8,7 @@ namespace TestProject1
 {
     internal interface ILinkedList<T> : IEnumerable<T>
     {
-        object AddLast(T element);
+        object Add(T element);
         object InsertAt(int index, T element);
         object RemoveAt(int index);
         void ClearList();

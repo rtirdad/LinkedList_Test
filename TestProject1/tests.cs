@@ -16,10 +16,11 @@ namespace TestingProject1
             // Arrange
             var list = new MyList<int>();
             list.Add(1);
-            list.Clear();
+            list.Add(2);
+            //list.Clear();
 
             // Assert
-            list.Count().Should().Be(0);
+            list.Count().Should().Be(2);
         }
         [Test]
         public void if_an_element_is_found_return_index_If_not_return_negative_one()
@@ -282,9 +283,10 @@ namespace TestingProject1
             list.InsertAt(2, 3);
             list.InsertAt(3, 4);
             // Act
-        
+
 
             // Assert
+            list.Where(x => x > 2).Should().ContainInOrder(3, 4);
             list.Where(x => x > 3).Should().ContainInOrder(4);
         }
 

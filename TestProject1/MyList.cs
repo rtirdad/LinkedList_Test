@@ -19,7 +19,7 @@ namespace TestProject1
 
         public void Add(T element)
         {
-            _list.AddLast(element);
+            _list.Add(element);
         }
 
         public void RemoveAt(int index)

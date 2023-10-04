@@ -37,7 +37,7 @@ namespace TestProject1
             return GetEnumerator();
         }
 
-        public object AddLast(T element)
+        /*public object Add(T element)
         {
             LinkedListNode<T> newNode = new LinkedListNode<T>(element, head);
             if (head == null)
@@ -55,6 +55,11 @@ namespace TestProject1
             }
             count++;
             return element;
+        }*/
+
+        public object Add(T element)
+        {
+            return this.InsertAt(count, element); 
         }
 
         public void ClearList()

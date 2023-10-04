@@ -11,8 +11,7 @@ using System.Threading.Tasks;
         {
 
 
-        public static MyList<TResult> Select<T, TResult>
-            (this MyList<T> source, Func<T, TResult> selector)
+        /*public static MyList<TResult> Select<T, TResult>(this MyList<T> source, Func<T, TResult> selector)
         {
             MyList<TResult> resultList = new MyList<TResult>();
             foreach (T item in source)
@@ -24,8 +23,7 @@ using System.Threading.Tasks;
         }
 
 
-       public static MyList<T> Where<T>
-            (this MyList<T> source, Func<T, bool> predicate)
+       public static MyList<T> Where<T>(this MyList<T> source, Func<T, bool> predicate)
             {
                 MyList<T> List = new MyList<T>();
                 foreach (T item in source)
@@ -38,7 +36,7 @@ using System.Threading.Tasks;
                 return List;
             }
 
-         /*public static IEnumerable<T> Where<T>(MyList<T> source, Func<T, bool> predicate)
+         public static IEnumerable<T> Where<T>(MyList<T> source, Func<T, bool> predicate)
         {
             MyList<T> List = new MyList<T>();
             foreach (T item in source)
