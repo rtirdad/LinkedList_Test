@@ -128,7 +128,7 @@ namespace TestProject1
         }
 
 
-        /*public int IndexOf(T element)
+        public int IndexOf(T element)
         {
             LinkedListNode<T> current = this.head;
             for (int i = 0; i < Count; i++)
@@ -139,9 +139,9 @@ namespace TestProject1
                 current = current.Next;
             }
             return -1;
-        }*/
+        }
 
-        public int IndexOf(T element)
+        /*public int IndexOf(T element)
         {
             int index = 0;
             foreach (T item in this)
@@ -151,7 +151,7 @@ namespace TestProject1
                 index++;
             }
             return -1;
-        }
+        }*/
 
 
         public bool Contains(T element)

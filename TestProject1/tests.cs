@@ -137,9 +137,11 @@ namespace TestingProject1
             list.InsertAt(0, "b");
             list.InsertAt(2, "c");
             list[2] = "d";
+
+            //Act
             var IndexOfD = list.IndexOf("d");
 
-
+            //Assert
             IndexOfD.Should().Be(2);
             list.Count().Should().Be(3);
         }
@@ -158,7 +160,6 @@ namespace TestingProject1
             var enumerator = list.GetEnumerator();
 
             // Assert
-
             enumerator.MoveNext().Should().BeFalse();
         }
 
@@ -209,11 +210,13 @@ namespace TestingProject1
             list.InsertAt(1, 2);
             list.InsertAt(2, 3);
 
-            // Act & Assert
+            // Act
+            
+            // Assert
             list.Any(x => x > 2).Should().BeTrue();
             list.Any(x => x > 5).Should().BeFalse();
         }
-        /**/
+        
 
         [Test]
         public void FirstOrDefault_should_return_First_or_default()
@@ -224,7 +227,9 @@ namespace TestingProject1
             list.InsertAt(1,2);
             list.InsertAt(2, 3);
 
-            // Act & Assert
+            // Act
+            
+            // Assert
             list.FirstOrDefault(x => x > 2).Should().Be(3);
             list.FirstOrDefault(x => x > 5).Should().Be(0); 
 
@@ -249,8 +254,98 @@ namespace TestingProject1
             enumerator.Current.Should().Be(3);
         }
 
+
+        [Test]
+        public void test_to_get_wordCound()
+        {
+            // Arrange
+            var list = new MyList<string>();
+            list.InsertAt(0, "The Apple Doesnt Fall Far From The Tree");
+            list.InsertAt(1, "Apple");
+
+            // Act
+            MyList<int> wordCounts = list.GetWordCounts();
+
+            // Assert
+            wordCounts[0].Should().Be(8); 
+            wordCounts[1].Should().Be(1); 
+        }
+
+
+        [Test]
+        public void Where()
+        {
+            // Arrange
+            var list = new MyList<int>();
+            list.InsertAt(0, 1);
+            list.InsertAt(1, 2);
+            list.InsertAt(2, 3);
+            list.InsertAt(3, 4);
+            // Act
+        
+
+            // Assert
+            list.Where(x => x > 3).Should().ContainInOrder(4);
+        }
+
+        [Test]
+        public void Select_Should_return_selected_elements_multiplied_by3()
+        {
+            // Arrange
+            var list = new MyList<int>();
+            list.InsertAt(0, 1);
+            list.InsertAt(1, 2);
+            list.InsertAt(2, 3);
+            list.InsertAt(3, 4);
+
+            // Act
+           
+            // Assert
+            list.Select(n => n * 2).Should().HaveCount(4);
+        }
+
+        [Test]
+        public void Select_Should_return_selected_elements_multiplied_by2()
+        {
+            // Arrange
+            var list = new MyList<int>();
+            list.InsertAt(0, 1);
+            list.InsertAt(1, 2);
+            list.InsertAt(2, 3);
+            list.InsertAt(3, 4);
+
+            // Act
+            var result = list.Select(n => n * 2);
+            result.Should().ContainInOrder(2);
+            //var enumerator = EvenNumbers.GetEnumerator();
+
+
+            // Assert
+            //EvenNumbers.Should().ContainInOrder(2, 4, 6, 8);
+        }
+
+        [Test]
+        public void Select_Should_return_selected_elements_ultiplied_by3()
+        {
+            // Arrange
+            var list = new MyList<int>();
+            list.InsertAt(0, 1);
+            list.InsertAt(1, 2);
+            list.InsertAt(2, 3);
+            list.InsertAt(3, 4);
+
+            // Act
+            var result = list.Select(n => n * 2);
+
+            // Assert
+            result.Should().ContainInOrder(2, 4, 6, 8);
+        }
+
+
     }
 
-
-
 }
+
+
+
+
