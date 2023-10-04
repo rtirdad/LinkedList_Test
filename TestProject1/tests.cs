@@ -318,12 +318,7 @@ namespace TestingProject1
 
             // Act
             var result = list.Select(n => n * 2);
-            result.Should().ContainInOrder(2);
-            //var enumerator = EvenNumbers.GetEnumerator();
-
-
-            // Assert
-            //EvenNumbers.Should().ContainInOrder(2, 4, 6, 8);
+            result.Should().ContainInOrder(2, 4, 6, 8);
         }
 
         [Test]

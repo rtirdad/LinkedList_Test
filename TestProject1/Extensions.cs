@@ -11,7 +11,7 @@ using System.Threading.Tasks;
         {
 
 
-        /*public static MyList<TResult> Select<T, TResult>(this MyList<T> source, Func<T, TResult> selector)
+        public static MyList<TResult> Select<T, TResult>(this MyList<T> source, Func<T, TResult> selector)
         {
             MyList<TResult> resultList = new MyList<TResult>();
             foreach (T item in source)
@@ -36,7 +36,7 @@ using System.Threading.Tasks;
                 return List;
             }
 
-         public static IEnumerable<T> Where<T>(MyList<T> source, Func<T, bool> predicate)
+         /*public static IEnumerable<T> Where<T>(MyList<T> source, Func<T, bool> predicate)
         {
             MyList<T> List = new MyList<T>();
             foreach (T item in source)
@@ -73,7 +73,7 @@ using System.Threading.Tasks;
             } 
         
         
-        public static MyList<int> GetWordCounts(this MyList<string> source)
+        /*public static MyList<int> GetWordCounts(this MyList<string> source)
         {
 
             MyList<int> wordCounts = new MyList<int>();
@@ -92,7 +92,7 @@ using System.Threading.Tasks;
             string[] words = input.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
 
             return words.Length;
-        }
+        }*/
     }
     }
 
