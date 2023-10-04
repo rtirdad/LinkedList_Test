@@ -22,15 +22,15 @@ using System.Threading.Tasks;
 
             public static MyList<T> Where<T>(this MyList<T> source, Func<T, bool> predicate)
             {
-                MyList<T> resultList = new MyList<T>();
+                MyList<T> List = new MyList<T>();
                 foreach (T item in source)
                 {
                     if (predicate(item))
                     {
-                        resultList.Add(item);
+                        List.Add(item);
                     }
                 }
-                return resultList;
+                return List;
             }
 
             public static bool Any<T>(this MyList<T> source, Func<T, bool> predicate)

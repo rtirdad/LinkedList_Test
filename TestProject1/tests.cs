@@ -192,10 +192,12 @@ namespace TestingProject1
             list.InsertAt(3, 4);
 
             // Act
-            var result = list.Select(x => x * 2);
+            IEnumerable<int> EvenNumbers = Enumerable.Select(list, n => n * 2);
+            var enumerator = EvenNumbers.GetEnumerator();
+     
 
             // Assert
-            result.Should().ContainInOrder(2, 4);
+            EvenNumbers.Should().ContainInOrder(2, 4, 6, 8);
         }
 
         [Test]
@@ -239,12 +241,12 @@ namespace TestingProject1
             list.InsertAt(3, 4);
 
             // Act
-            IEnumerable<int> EvenNumbers = Enumerable.Where(list,n => n % 2 ==0);
+            IEnumerable<int> EvenNumbers = Enumerable.Where(list,n => n > 2);
             var enumerator = EvenNumbers.GetEnumerator();
 
             // Assert
             enumerator.MoveNext().Should().BeTrue();
-            enumerator.Current.Should().Be(2);
+            enumerator.Current.Should().Be(3);
         }
 
     }

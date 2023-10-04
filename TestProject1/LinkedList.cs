@@ -15,8 +15,6 @@ namespace TestProject1
 
         public bool Empty => Count == 0;
 
-        //Array random = Array.CreateInstance(typeof(int), 10); 
-
         public T this[int index] { get => AtIndex(index); set => SetElement(index, value); }
 
         public IEnumerator<T> GetEnumerator()
